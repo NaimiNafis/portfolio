@@ -2,16 +2,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Update links with actual URLs when you have them
     const updateLinks = () => {
-        // GitHub profile link
+        // GitHub profile link - Replace "yourusername" with your actual GitHub username
         const githubLinks = document.querySelectorAll('#github, #github-contact');
         githubLinks.forEach(link => {
-            link.href = "https://github.com/yourusername";
+            link.href = "https://github.com/NaimiNafis";
+            link.setAttribute('target', '_blank'); // Open in new tab
         });
 
         // LinkedIn profile link
         const linkedinLinks = document.querySelectorAll('#linkedin, #linkedin-contact');
         linkedinLinks.forEach(link => {
-            link.href = "https://www.linkedin.com/in/yourusername";
+            link.href = "https://www.linkedin.com/in/naimi-nafis-83845a274/";
+            link.setAttribute('target', '_blank'); // Open in new tab
         });
 
         // Resume download link
@@ -23,20 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update these with actual URLs when available
         const projectLinks = {
             "Custom C Compiler": {
-                demo: "#",
-                code: "https://github.com/yourusername/c-compiler"
+                demo: "https://github.com/NaimiNafis/language-processing",
+                code: "https://github.com/NaimiNafis/language-processing"
             },
             "Readoku - AI Translator Extension": {
-                demo: "#",
-                code: "https://github.com/yourusername/readoku"
+                demo: "https://github.com/NaimiNafis/readoku",
+                code: "https://github.com/NaimiNafis/readoku"
             },
             "TOP Calculator": {
-                demo: "#",
-                code: "https://github.com/yourusername/calculator"
+                demo: "https://naiminafis.github.io/calculator/",
+                code: "https://github.com/NaimiNafis/calculator"
             },
             "Etch-A-Sketch": {
-                demo: "#",
-                code: "https://github.com/yourusername/etch-a-sketch"
+                demo: "https://naiminafis.github.io/etch-a-sketch/",
+                code: "https://github.com/NaimiNafis/etch-a-sketch"
             }
         };
 
@@ -50,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (projectLinks[title]) {
                 links[0].href = projectLinks[title].demo;
+                links[0].setAttribute('target', '_blank'); // Open in new tab
                 links[1].href = projectLinks[title].code;
+                links[1].setAttribute('target', '_blank'); // Open in new tab
             }
         });
     };

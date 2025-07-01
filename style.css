@@ -10,6 +10,7 @@ body {
     background-color: #FFFAF0;
     color: #0A0A0A;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -109,32 +110,104 @@ ul {
     text-decoration: none;
 }
 
-/* Skills Section */
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.skills-group h3 {
-    margin-bottom: 1rem;
-}
-
-.skills-group ul {
-    list-style-type: none;
-}
-
-.skills-group li {
-    margin-bottom: 8px;
-    position: relative;
-    padding-left: 20px;
-}
-
-.skills-group li:before {
-    content: "•";
-    position: absolute;
-    left: 0;
+/* Tech Stack Section */
+.tech-stack-section {
+    text-align: center;
+    background-color: #FFFAF0;
     color: #0A0A0A;
+    margin: 0 -9999px; /* Full width trick */
+    padding: 80px 9999px; /* Full width trick */
+    position: relative;
+    border-top: none;
+}
+
+.tech-stack-section .section-title {
+    color: #0A0A0A;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+
+.tech-stack-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.highlight {
+    color: #0A0A0A;
+    font-weight: 600;
+}
+
+.highlight:nth-of-type(2) {
+    color: #0A0A0A;
+    font-weight: 600;
+}
+
+.tech-logos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 3rem;
+}
+
+.tech-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.tech-logo img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.tech-logo:hover img {
+    transform: translateY(-5px);
+}
+
+.github-logo {
+    filter: none;
+}
+
+.tech-logo span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.load-more-container {
+    margin-top: 2rem;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border: 1px solid rgba(10, 10, 10, 0.2);
+    border-radius: 50px;
+    color: #0A0A0A;
+    font-weight: 500;
+    background-color: rgba(10, 10, 10, 0.05);
+    transition: all 0.3s ease;
+    min-width: 160px;
+}
+
+.load-more-btn:hover {
+    background-color: rgba(10, 10, 10, 0.1);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.arrow {
+    font-size: 1.2rem;
 }
 
 /* Projects Section */
@@ -241,5 +314,29 @@ footer {
     
     .section {
         padding: 40px 0;
+    }
+    
+    .tech-stack-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .tech-logos-container {
+        gap: 25px;
+    }
+    
+    .tech-logo img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .load-more-btn {
+        min-width: 140px;
+        padding: 10px 20px;
+    }
+    
+    .tech-stack-intro {
+        font-size: 1.2rem;
+        padding: 0 15px;
     }
 } 
