@@ -3,12 +3,15 @@ body {
     font-family: var(--font-family);
     color: var(--text-primary);
     font-size: calc(16px + 0.1vw); /* Base font size scales slightly with viewport */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4 {
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
+    color: var(--text-primary);
 }
 
 /* Responsive heading sizes using clamp() for min, preferred, and max sizes */
@@ -33,6 +36,7 @@ h4 {
 p {
     margin-bottom: var(--spacing-md);
     line-height: 1.6;
+    color: var(--text-secondary);
     /* For better readability on large screens, limit line length */
     max-width: 70ch;
 }
@@ -53,17 +57,20 @@ p {
 
 a {
     color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--text-primary);
-    text-decoration: underline;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .section-title {
     margin-bottom: var(--spacing-lg);
     font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: 1px;
+    color: var(--accent-color);
 }
 
 .text-center {
@@ -74,6 +81,11 @@ a:hover {
     color: var(--text-light);
 }
 
+.text-secondary {
+    color: var(--text-secondary);
+}
+
 .highlight {
     font-weight: 600;
+    color: var(--accent-color);
 } 

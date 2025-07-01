@@ -1,18 +1,27 @@
 /* CSS Variables */
 :root {
     /* Colors */
-    --bg-primary: #FFFAF0;
-    --bg-secondary: #F5F5F5;
-    --text-primary: #0A0A0A;
-    --text-secondary: #555555;
-    --text-light: #999999;
-    --border-color: #E0E0E0;
-    --accent-gradient: linear-gradient(90deg, #4776E6, #8E54E9);
-    --timeline-circle: #8E54E9;
-    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.03);
-    --shadow-medium: 0 10px 20px rgba(0, 0, 0, 0.08);
-    --shadow-timeline: 0 0 0 6px rgba(142, 84, 233, 0.2);
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --text-primary: #EAEAEA;
+    --text-secondary: #A0A0A0;
+    --text-light: #666666;
+    --border-color: #2A2A2A;
+    --accent-color: #FFFFFF;
+    --accent-gradient: linear-gradient(90deg, #2A2A2A, #1E1E1E);
+    --timeline-circle: #FFFFFF;
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 10px 20px rgba(0, 0, 0, 0.3);
+    --shadow-timeline: 0 0 0 6px rgba(255, 255, 255, 0.1);
 
+    /* Additional Dark Mode Colors */
+    --card-bg: #1A1A1A;
+    --hover-bg: #2C2C2C;
+    --input-bg: #242424;
+    --button-text: #FFFFFF;
+    --button-hover: #333333;
+    --section-divider: #2A2A2A;
+    
     /* Typography */
     --font-family: 'Inter', sans-serif;
     --h1-size: 3rem;
