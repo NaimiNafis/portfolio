@@ -1,6 +1,6 @@
 /* About Section Styles */
 .about {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     position: relative;
     z-index: 1;
 }

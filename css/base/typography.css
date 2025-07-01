@@ -67,10 +67,21 @@ a:hover {
 }
 
 .section-title {
-    margin-bottom: var(--spacing-lg);
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: 1px;
-    color: var(--accent-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--accent-purple);
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
 }
 
 .text-center {

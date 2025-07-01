@@ -3,13 +3,15 @@
     /* Colors */
     --bg-primary: #121212;
     --bg-secondary: #1E1E1E;
-    --text-primary: #EAEAEA;
+    --text-primary: #F5F2EA;
     --text-secondary: #A0A0A0;
     --text-light: #666666;
     --border-color: #2A2A2A;
-    --accent-color: #FFFFFF;
+    --accent-color: #F5F2EA;
+    --accent-purple: #A25CE0;
+    --accent-purple-light: #C585F7;
     --accent-gradient: linear-gradient(90deg, #2A2A2A, #1E1E1E);
-    --timeline-circle: #FFFFFF;
+    --timeline-circle: #F5F2EA;
     --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.2);
     --shadow-medium: 0 10px 20px rgba(0, 0, 0, 0.3);
     --shadow-timeline: 0 0 0 6px rgba(255, 255, 255, 0.1);
