@@ -133,6 +133,91 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call the smooth scrolling setup function
     setupSmoothScrolling();
 
+    // Setup contact form validation and submission
+    const setupContactForm = () => {
+        const contactForm = document.querySelector('.contact-form');
+        if (!contactForm) return;
+        
+        const nameInput = contactForm.querySelector('input[type="text"]');
+        const emailInput = contactForm.querySelector('input[type="email"]');
+        const subjectInput = contactForm.querySelectorAll('input[type="text"]')[1];
+        const messageTextarea = contactForm.querySelector('textarea');
+        const sendButton = contactForm.querySelector('.send-btn');
+        
+        // Basic validation function
+        const validateForm = () => {
+            let isValid = true;
+            
+            // Reset validation styles
+            [nameInput, emailInput, subjectInput, messageTextarea].forEach(field => {
+                field.style.borderColor = '#333';
+            });
+            
+            // Check required fields
+            if (!nameInput.value.trim()) {
+                nameInput.style.borderColor = '#ff4d4d';
+                isValid = false;
+            }
+            
+            if (!emailInput.value.trim()) {
+                emailInput.style.borderColor = '#ff4d4d';
+                isValid = false;
+            } else {
+                // Simple email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    emailInput.style.borderColor = '#ff4d4d';
+                    isValid = false;
+                }
+            }
+            
+            if (!messageTextarea.value.trim()) {
+                messageTextarea.style.borderColor = '#ff4d4d';
+                isValid = false;
+            }
+            
+            return isValid;
+        };
+        
+        // Handle form submission
+        sendButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // Show success message (in production, you'd send this to a server)
+                const formData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    subject: subjectInput.value.trim(),
+                    message: messageTextarea.value.trim()
+                };
+                
+                // For demo purposes - log the data and show success message
+                console.log('Form submitted:', formData);
+                
+                // Show success message (you can enhance this with a proper notification)
+                sendButton.innerHTML = '<span class="btn-icon"><i class="fas fa-check"></i></span> Sent!';
+                sendButton.style.backgroundColor = '#4CAF50';
+                sendButton.disabled = true;
+                
+                // Reset the form after a delay
+                setTimeout(() => {
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    subjectInput.value = '';
+                    messageTextarea.value = '';
+                    
+                    sendButton.innerHTML = '<span class="btn-icon"><i class="fas fa-paper-plane"></i></span> Send Message';
+                    sendButton.style.backgroundColor = '';
+                    sendButton.disabled = false;
+                }, 3000);
+            }
+        });
+    };
+    
+    // Call the contact form setup function
+    setupContactForm();
+
     // Simple scroll reveal animation
     const revealOnScroll = () => {
         const sections = document.querySelectorAll('.section');

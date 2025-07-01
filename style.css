@@ -498,8 +498,8 @@ ul {
 
 /* Contact Section */
 #contact {
-    text-align: center;
     background-color: #FFFAF0;
+    color: #0A0A0A;
     clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%);
     padding-top: 120px;
     margin-top: -40px;
@@ -508,23 +508,142 @@ ul {
 }
 
 #contact .section-content {
-    max-width: 900px;
+    max-width: 1200px;
 }
 
-#contact p {
+#contact .section-title {
+    color: #0A0A0A;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.contact-desc {
     max-width: 500px;
-    margin: 0 auto 2rem;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.1rem;
+    text-align: left;
 }
 
-.contact-email {
-    display: inline-block;
-    font-size: 1.2rem;
-    font-weight: 500;
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
     margin-bottom: 2rem;
 }
 
-#contact .social-links {
+.contact-info {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    color: #0A0A0A;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+    color: #999;
+}
+
+.send-btn {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: #0A0A0A;
+    color: #FFFAF0;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.send-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-alternative {
+    margin-top: auto;
+    padding-top: 2rem;
+}
+
+.contact-alternative p {
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.contact-email {
+    color: #0A0A0A;
+    font-weight: 500;
+    border-bottom: 1px dotted #999;
+    transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+    color: #333;
+    border-bottom-color: #333;
+}
+
+#contact .social-links {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+
+#contact .social-icon {
+    color: #0A0A0A;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+#contact .social-icon:hover {
+    color: #333;
+    transform: translateY(-3px);
 }
 
 /* Footer */
@@ -577,6 +696,15 @@ footer .section-content {
     
     .right {
         left: 0%;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info {
+        max-width: 100%;
+        margin-bottom: 2rem;
     }
 }
 
@@ -634,6 +762,37 @@ footer .section-content {
     
     .mobile-menu-toggle {
         display: block;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-input, .form-textarea {
+        padding: 12px;
+    }
+    
+    .contact-container {
+        margin-bottom: 2rem;
+        gap: 30px;
+    }
+    
+    .contact-info {
+        margin-bottom: 0;
+    }
+    
+    #contact .section-title,
+    .contact-desc {
+        text-align: center;
+    }
+    
+    .contact-alternative {
+        text-align: center;
+    }
+    
+    #contact .social-links {
+        justify-content: center;
     }
 }
 
@@ -697,5 +856,30 @@ footer .section-content {
     
     .left::after, .right::after {
         left: 8px;
+    }
+    
+    .form-input, .form-textarea {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+    
+    .send-btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        align-self: center;
+        width: 100%;
+    }
+    
+    .contact-desc {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .contact-alternative p {
+        font-size: 0.9rem;
+    }
+    
+    .contact-container {
+        gap: 20px;
     }
 } 
