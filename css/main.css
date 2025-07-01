@@ -1,0 +1,22 @@
+/* Main CSS File - Imports all components */
+
+/* Base Styles */
+@import 'base/reset.css';
+@import 'base/variables.css';
+@import 'base/typography.css';
+@import 'base/layout.css';
+
+/* Components */
+@import 'components/header.css';
+@import 'components/hero.css';
+@import 'components/about.css';
+@import 'components/career.css';
+@import 'components/projects.css';
+@import 'components/contact.css';
+@import 'components/footer.css';
+@import 'components/buttons.css';
+
+/* Utilities */
+@import 'utils/animations.css';
+@import 'utils/utilities.css';
+@import 'utils/media-queries.css'; 

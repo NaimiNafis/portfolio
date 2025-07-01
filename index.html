@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naimi - Software Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,104 +12,112 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="section-content">
-            <div class="logo">Naimi</div>
+    <header>
+        <div class="container flex-between">
+            <a href="#" class="logo">Naimi</a>
             <nav>
-                <ul class="nav-links">
+                <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#career">Career</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <button class="close-menu"><i class="fas fa-times"></i></button>
                 </ul>
             </nav>
+            <button class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
         </div>
+        <div class="overlay"></div>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <div class="section-content">
-            <h1>Hello, I'm Naimi Nafis👋</h1>
-            <h2>A software developer with a passion for building robust backend solutions.</h2>
-            <p>I specialize in creating efficient and scalable software with a focus on clean code and performance optimization. With experience in various programming languages and a strong foundation in computer science concepts, I aim to deliver high-quality solutions to complex problems.</p>
-            <div class="social-links">
-                <a href="#" class="social-icon" id="github"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon" id="linkedin"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="btn" id="resume">Download Resume</a>
+    <!-- Home/Hero Section -->
+    <section id="home" class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-on-scroll" data-animation="slide-in-up">Hello, I'm Naimi Nafis👋</h1>
+                <h2 class="hero-subtitle animate-on-scroll" data-animation="slide-in-up" data-delay="200">A software developer with a passion for building robust backend solutions.</h2>
+                <p class="animate-on-scroll" data-animation="slide-in-up" data-delay="300">I specialize in creating efficient and scalable software with a focus on clean code and performance optimization. With experience in various programming languages and a strong foundation in computer science concepts, I aim to deliver high-quality solutions to complex problems.</p>
+                <div class="hero-cta animate-on-scroll" data-animation="slide-in-up" data-delay="400">
+                    <a href="assets/docs/resume-placeholder.txt" class="btn btn-primary btn-icon" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-icon">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="hero-socials animate-on-scroll" data-animation="slide-in-up" data-delay="500">
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section (Using Tech Stack) -->
-    <section id="about" class="section tech-stack-section">
-        <div class="section-content">
-            <h2 class="section-title">ABOUT ME</h2>
-            <p class="tech-stack-intro">My expertise spans a diverse range of <span class="highlight">technologies</span>, enabling me to deliver comprehensive and <span class="highlight">cutting-edge solutions</span> across various platforms.</p>
-            <div class="tech-logos-container">
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+    <!-- About Section -->
+    <section id="about" class="about section section-angle">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll" data-animation="fade-in">ABOUT ME</h2>
+            <div class="about-content">
+                <div class="about-grid grid grid-2">
+                    <div class="about-image animate-on-scroll" data-animation="slide-in-left">
+                        <img src="https://placehold.co/600x400" alt="Naimi Nafis">
+                    </div>
+                    <div class="about-info animate-on-scroll" data-animation="slide-in-right">
+                        <h3>Who I Am</h3>
+                        <p>I'm a passionate software developer with a strong focus on creating efficient, scalable, and maintainable solutions. My journey in programming began during my college years and has evolved into a career dedicated to crafting quality software.</p>
+                        <p>Currently, I'm working as an SDE Intern at Visteon, where I develop and enhance Android automotive solutions. My approach combines technical expertise with a keen eye for detail and user experience.</p>
+                        <h4>My Skills</h4>
+                        <div class="skills-container">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">AOSP</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" alt="Ruby">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" class="github-logo">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
-                </div>
-            </div>
-            <div class="load-more-container">
-                <a href="#" class="load-more-btn" target="_blank">Load More <span class="arrow">→</span></a>
             </div>
         </div>
     </section>
     
     <!-- Career Section -->
-    <section id="career" class="section career-section">
-        <div class="section-content">
-            <h2 class="section-title">CAREER</h2>
-            <div class="timeline">
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <div class="date">2023 - 2025</div>
-                        <h3>Started with web development</h3>
-                        <h4>theodinproject.com</h4>
-                        <p>Began my journey in web development, learning how learn technologies through documentation. Developed several personal projects to enhance my skills.</p>
+    <section id="career" class="career section">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll" data-animation="fade-in">MY JOURNEY</h2>
+            <div class="career-content">
+                <div class="timeline animate-on-scroll" data-animation="fade-in">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item timeline-item-right">
+                        <div class="timeline-content">
+                            <span class="timeline-date">2022 - Present</span>
+                            <h3 class="timeline-title">SDE Intern</h3>
+                            <p class="timeline-company">Visteon</p>
+                            <p>Worked on the AOSP framework, enhancing CarService functionality and improving Android services within an automotive context. Gained hands-on experience with porting features across different Android versions and hardware platforms.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-container right">
-                    <div class="timeline-content">
-                        <div class="date">2021 - 2025</div>
-                        <h3>B.E(Hons) in Computer Science</h3>
-                        <h4>Goa College of Engineering</h4>
-                        <p>Graduated with a 8.6 GPA, focusing on computer science and software engineering fundamentals.</p>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item timeline-item-left">
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 - 2025</span>
+                            <h3 class="timeline-title">Web Development Journey</h3>
+                            <p class="timeline-company">The Odin Project</p>
+                            <p>Began my journey in web development, learning how to use technologies through documentation. Developed several personal projects to enhance my skills in frontend and backend development.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <div class="date">2022 - Present</div>
-                        <h3>SDE Intern</h3>
-                        <h4>Visteon</h4>
-                        <p>Worked on the AOSP framework, enhancing CarService functionality and improving Android services within an automotive context. Gained hands-on experience with porting features across different Android versions and hardware platforms such as Exynos, Snapdragon, and MediaTek.</p>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item timeline-item-right">
+                        <div class="timeline-content">
+                            <span class="timeline-date">2021 - 2025</span>
+                            <h3 class="timeline-title">B.E(Hons) in Computer Science</h3>
+                            <p class="timeline-company">Goa College of Engineering</p>
+                            <p>Graduated with a 8.6 GPA, focusing on computer science fundamentals, algorithms, data structures, and software engineering principles.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,48 +125,67 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="section-content">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <h3>Custom C Compiler</h3>
-                    <p class="tech-stack">Tech: C</p>
-                    <p class="project-desc">Custom compiler with lexical analyzer and parser</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link">View Code</a>
+    <section id="projects" class="projects section section-angle">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll" data-animation="fade-in">FEATURED PROJECTS</h2>
+            <div class="projects-content">
+                <div class="grid grid-3">
+                    <!-- Project 1 -->
+                    <div class="project-card animate-on-scroll" data-animation="fade-in">
+                        <div class="project-image">
+                            <img src="https://placehold.co/600x400" alt="Custom C Compiler">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Custom C Compiler</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                                <span class="project-tag">Compiler Design</span>
+                            </div>
+                            <p class="project-description">Custom compiler with lexical analyzer and parser. Implements basic syntax checking and code generation for a subset of C language features.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h3>Readoku - AI Translator Extension</h3>
-                    <p class="tech-stack">Tech: JavaScript, HTML, CSS, AI API</p>
-                    <p class="project-desc">Browser extension for English-Japanese translation</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link">View Code</a>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card animate-on-scroll" data-animation="fade-in" data-delay="200">
+                        <div class="project-image">
+                            <img src="https://placehold.co/600x400" alt="Readoku - AI Translator Extension">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Readoku - AI Translator Extension</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">HTML/CSS</span>
+                                <span class="project-tag">AI API</span>
+                            </div>
+                            <p class="project-description">Browser extension for English-Japanese translation. Leverages AI for context-aware translations and provides learning tools for language acquisition.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <h3>TOP Calculator</h3>
-                    <p class="tech-stack">Tech: Vanilla JavaScript, HTML, CSS</p>
-                    <p class="project-desc">Fully functional calculator</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link">View Code</a>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <h3>Etch-A-Sketch</h3>
-                    <p class="tech-stack">Tech: Vanilla JavaScript, HTML, CSS</p>
-                    <p class="project-desc">Interactive drawing application</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link">View Code</a>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card animate-on-scroll" data-animation="fade-in" data-delay="300">
+                        <div class="project-image">
+                            <img src="https://placehold.co/600x400" alt="TOP Calculator">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">TOP Calculator</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">HTML/CSS</span>
+                            </div>
+                            <p class="project-description">Fully functional calculator with standard and scientific operations. Features a responsive design and keyboard support for improved user experience.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,44 +193,86 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="section-content">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2 class="section-title">Contact Me :)</h2>
-                    <p class="contact-desc">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
-                    
-                    <div class="contact-alternative">
-                        <p>You can also reach me directly at <a href="mailto:naiminafis@gmail.com" class="contact-email">naiminafis@gmail.com</a></p>
-                        <div class="social-links">
-                            <a href="#" class="social-icon" id="github-contact"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-icon" id="linkedin-contact"><i class="fab fa-linkedin"></i></a>
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll" data-animation="fade-in">GET IN TOUCH</h2>
+            <div class="contact-content">
+                <div class="contact-grid grid grid-2">
+                    <div class="contact-info animate-on-scroll" data-animation="slide-in-left">
+                        <h3>Let's Talk!</h3>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out using the form or through any of the channels below.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                                <a href="mailto:naiminafis@gmail.com" class="contact-text">naiminafis@gmail.com</a>
+                            </div>
+                            <div class="contact-detail">
+                                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                                <span class="contact-text">Goa, India</span>
+                            </div>
+                            <div class="contact-detail">
+                                <span class="contact-icon"><i class="fab fa-github"></i></span>
+                                <a href="#" class="contact-text">github.com/naimi</a>
+                            </div>
+                            <div class="contact-detail">
+                                <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+                                <a href="#" class="contact-text">linkedin.com/in/naimi</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="contact-form">
-                    <div class="form-row">
-                        <input type="text" placeholder="Your name" class="form-input">
-                        <input type="email" placeholder="your.email@example.com" class="form-input">
+                    
+                    <div class="contact-form-container animate-on-scroll" data-animation="slide-in-right">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">Send Message</button>
+                            <div class="form-message"></div>
+                        </form>
                     </div>
-                    <input type="text" placeholder="What's this about?" class="form-input">
-                    <textarea placeholder="Tell me about your project or idea..." class="form-textarea"></textarea>
-                    <button type="submit" class="send-btn">
-                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                        Send Message
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="section">
-        <div class="section-content">
-            <p>© 2025 NaimiNafis. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Naimi Nafis</div>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social"><i class="fab fa-github"></i></a>
+                    <a href="#" class="footer-social"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#career">Career</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <p class="copyright">© 2025 Naimi Nafis. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html> 

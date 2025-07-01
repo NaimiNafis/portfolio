@@ -1,0 +1,128 @@
+/* Career/Timeline Section Styles */
+.career {
+    background-color: var(--bg-primary);
+    position: relative;
+}
+
+.career-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: 15px;
+    border-radius: 50%;
+    background: var(--timeline-circle);
+    box-shadow: var(--shadow-timeline);
+    z-index: 1;
+}
+
+.timeline-item-left {
+    left: 0;
+}
+
+.timeline-item-right {
+    left: 50%;
+}
+
+.timeline-item-left::after {
+    right: -10px;
+}
+
+.timeline-item-right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: var(--spacing-md);
+    background: #fff;
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.timeline-date {
+    background: var(--accent-gradient);
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: var(--small-size);
+    position: absolute;
+    top: -10px;
+}
+
+.timeline-item-left .timeline-date {
+    right: 15px;
+}
+
+.timeline-item-right .timeline-date {
+    left: 15px;
+}
+
+.timeline-title {
+    margin: var(--spacing-md) 0 var(--spacing-xs);
+}
+
+.timeline-company {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive timeline */
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item::after {
+        left: 21px;
+    }
+    
+    .timeline-item-right {
+        left: 0;
+    }
+    
+    .timeline-item-left .timeline-date,
+    .timeline-item-right .timeline-date {
+        right: auto;
+        left: 15px;
+    }
+} 

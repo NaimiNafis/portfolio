@@ -1,0 +1,84 @@
+/* Media Query Utilities */
+
+/* Extra small devices (phones) */
+@media (max-width: 575px) {
+    :root {
+        --h1-size: 2.2rem;
+        --h2-size: 1.8rem;
+        --h3-size: 1.3rem;
+        --section-padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .section-angle:before {
+        height: 80px;
+    }
+}
+
+/* Small devices (landscape phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+    :root {
+        --h1-size: 2.5rem;
+        --h2-size: 2rem;
+        --section-padding: 70px 0;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .section-angle:before {
+        height: 100px;
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* No specific overrides needed */
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        font-size: 12pt;
+        color: black;
+    }
+    
+    header, footer, .contact-form, .hero-cta, .project-links {
+        display: none !important;
+    }
+    
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+    
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    img {
+        page-break-inside: avoid;
+        max-width: 100% !important;
+    }
+    
+    .timeline::after {
+        background-color: #ccc;
+    }
+    
+    .section {
+        padding: 20px 0;
+        page-break-inside: avoid;
+    }
+} 
