@@ -2,6 +2,7 @@
 .about {
     background-color: var(--bg-secondary);
     position: relative;
+    z-index: 1;
 }
 
 .about-content {
@@ -11,6 +12,9 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .about-grid {
@@ -85,5 +89,106 @@
     .about-image {
         max-width: 400px;
         margin: 0 auto var(--spacing-lg);
+    }
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: var(--text-secondary);
+}
+
+/* Tech Stack Styles */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3rem 2rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.tech-icon:hover {
+    transform: translateY(-5px);
+}
+
+.tech-icon i {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+.tech-icon span {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    display: block;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1400px) {
+    .about-content {
+        max-width: 1000px;
+    }
+    
+    .tech-stack {
+        max-width: 1100px;
+    }
+    
+    .tech-icon i {
+        font-size: 4rem;
+        height: 4rem;
+        width: 4rem;
+    }
+    
+    .tech-icon span {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .tech-stack {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-stack {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 1.5rem;
+    }
+    
+    .tech-icon i {
+        font-size: 3rem;
+        height: 3rem;
+        width: 3rem;
+    }
+    
+    .about-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1rem;
     }
 } 
