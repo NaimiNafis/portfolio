@@ -102,12 +102,10 @@
 /* Tech Stack Styles */
 .tech-stack {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 3rem 2rem;
-    margin: 3rem auto;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
     justify-content: center;
-    align-items: center;
 }
 
 .tech-icon {
@@ -115,30 +113,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    transition: transform 0.3s ease;
-    text-align: center;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tech-icon i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.tech-icon span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 .tech-icon:hover {
     transform: translateY(-5px);
 }
 
-.tech-icon i {
-    font-size: 3.5rem;
-    color: var(--accent-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 3.5rem;
-    width: 3.5rem;
-}
-
-.tech-icon span {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    display: block;
-    text-align: center;
+.tech-icon:hover i,
+.tech-icon:hover span {
+    color: var(--accent-teal);
 }
 
 /* Responsive Adjustments */
