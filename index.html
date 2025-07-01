@@ -11,8 +11,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Hero Section -->
-    <section id="hero" class="section">
+    <!-- Header -->
+    <header class="header">
+        <div class="section-content">
+            <div class="logo">Naimi</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
         <div class="section-content">
             <h1>Hello, I'm Naimi Nafis👋</h1>
             <h2>A software developer with a passion for building robust backend solutions.</h2>
@@ -21,6 +37,81 @@
                 <a href="#" class="social-icon" id="github"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon" id="linkedin"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="btn" id="resume">Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Using Tech Stack) -->
+    <section id="about" class="section tech-stack-section">
+        <div class="section-content">
+            <h2 class="section-title">ABOUT ME</h2>
+            <p class="tech-stack-intro">My expertise spans a diverse range of <span class="highlight">technologies</span>, enabling me to deliver comprehensive and <span class="highlight">cutting-edge solutions</span> across various platforms.</p>
+            <div class="tech-logos-container">
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" alt="Ruby">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" class="github-logo">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                </div>
+                <div class="tech-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
+                </div>
+            </div>
+            <div class="load-more-container">
+                <a href="#" class="load-more-btn" target="_blank">Load More <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Career Section -->
+    <section id="career" class="section career-section">
+        <div class="section-content">
+            <h2 class="section-title">CAREER</h2>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="date">2023 - 2025</div>
+                        <h3>Started with web development</h3>
+                        <h4>theodinproject.com</h4>
+                        <p>Began my journey in web development, learning how learn technologies through documentation. Developed several personal projects to enhance my skills.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="date">2021 - 2025</div>
+                        <h3>B.E(Hons) in Computer Science</h3>
+                        <h4>Goa College of Engineering</h4>
+                        <p>Graduated with a 8.6 GPA, focusing on computer science and software engineering fundamentals.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="date">2022 - Present</div>
+                        <h3>SDE Intern</h3>
+                        <h4>Visteon</h4>
+                        <p>Worked on the AOSP framework, enhancing CarService functionality and improving Android services within an automotive context. Gained hands-on experience with porting features across different Android versions and hardware platforms such as Exynos, Snapdragon, and MediaTek.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -70,46 +161,6 @@
                         <a href="#" class="project-link">View Code</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section id="skills" class="section tech-stack-section">
-        <div class="section-content">
-            <h2 class="section-title">MY TECH STACK</h2>
-            <p class="tech-stack-intro">My expertise spans a diverse range of <span class="highlight">technologies</span>, enabling me to deliver comprehensive and <span class="highlight">cutting-edge solutions</span> across various platforms.</p>
-            <div class="tech-logos-container">
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" alt="Ruby">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub" class="github-logo">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-                </div>
-                <div class="tech-logo">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
-                </div>
-            </div>
-            <div class="load-more-container">
-                <a href="#" class="load-more-btn" target="_blank">Load More <span class="arrow">→</span></a>
             </div>
         </div>
     </section>

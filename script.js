@@ -62,6 +62,77 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize links
     updateLinks();
 
+    // Add mobile menu toggle functionality
+    const setupMobileMenu = () => {
+        // Add mobile menu toggle button to the DOM if it doesn't exist
+        const header = document.querySelector('.header .section-content');
+        if (!document.querySelector('.mobile-menu-toggle')) {
+            const menuToggle = document.createElement('div');
+            menuToggle.className = 'mobile-menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            header.appendChild(menuToggle);
+        }
+        
+        // Get the toggle button and nav links
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        // Toggle menu when button is clicked
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Change icon based on menu state
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+    };
+    
+    // Call the mobile menu setup function
+    setupMobileMenu();
+    
+    // Add smooth scrolling to all links
+    const setupSmoothScrolling = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                // Calculate header height to offset scroll position
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                
+                // Scroll to target with header offset
+                const yOffset = -headerHeight;
+                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                
+                window.scrollTo({
+                    top: y,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    };
+    
+    // Call the smooth scrolling setup function
+    setupSmoothScrolling();
+
     // Simple scroll reveal animation
     const revealOnScroll = () => {
         const sections = document.querySelectorAll('.section');
@@ -79,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial state for sections
     const initializeSections = () => {
-        const sections = document.querySelectorAll('.section:not(#hero)');
+        const sections = document.querySelectorAll('.section:not(#home)');
         
         sections.forEach(section => {
             section.style.opacity = '0';
@@ -94,6 +165,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add scroll event listener
     window.addEventListener('scroll', revealOnScroll);
     
+    // Handle active menu items
+    const updateActiveNavLink = () => {
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // Get current scroll position
+        const scrollPosition = window.scrollY;
+        
+        // Loop through sections to find current section
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    };
+    
+    // Add scroll event listener for active nav updates
+    window.addEventListener('scroll', updateActiveNavLink);
+    
     // Call once on load to check initial viewport state
     revealOnScroll();
+    updateActiveNavLink();
 }); 
