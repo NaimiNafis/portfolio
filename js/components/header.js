@@ -66,19 +66,43 @@ export function initHeader() {
     // Highlight active nav item based on scroll position
     const sections = document.querySelectorAll('section[id]');
     
-    window.addEventListener('scroll', () => {
+    // Initial check on page load
+    highlightActiveSection();
+    
+    // Check on scroll
+    window.addEventListener('scroll', highlightActiveSection);
+    
+    function highlightActiveSection() {
         const scrollY = window.pageYOffset;
+        const headerHeight = header.offsetHeight;
+        
+        // Add a small offset to improve detection
+        const offset = headerHeight + 10;
+        
+        // Remove active class from all links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Find the current section and highlight its nav link
+        let currentSection = null;
         
         sections.forEach(section => {
+            const sectionTop = section.offsetTop - offset;
             const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
             const sectionId = section.getAttribute('id');
             
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector(`.nav-menu a[href*=${sectionId}]`)?.classList.add('active');
-            } else {
-                document.querySelector(`.nav-menu a[href*=${sectionId}]`)?.classList.remove('active');
+            // Check if we're inside this section
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+                document.querySelector(`.nav-menu a[href="#${sectionId}"]`)?.classList.add('active');
             }
         });
-    });
+        
+        // If at the bottom of page and no section is active, highlight the last one
+        if (!currentSection && window.innerHeight + scrollY >= document.body.offsetHeight - 100) {
+            const lastSectionId = sections[sections.length - 1].getAttribute('id');
+            document.querySelector(`.nav-menu a[href="#${lastSectionId}"]`)?.classList.add('active');
+        }
+    }
 } 

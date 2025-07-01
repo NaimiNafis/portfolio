@@ -29,13 +29,30 @@ export function smoothScrollTo(elementId, offset = 0) {
     const element = document.getElementById(elementId);
     if (!element) return;
     
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    // Calculate header height dynamically for accurate scrolling
+    const headerHeight = document.querySelector('header').offsetHeight;
     
+    // Fixed offset value to ensure perfect alignment
+    let scrollOffset = headerHeight;
+    
+    // For very large screens, we can use the dynamic calculation
+    if (window.innerWidth > 1600) {
+        scrollOffset = headerHeight + 20;
+    }
+    
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - scrollOffset;
+    
+    // Use smooth scrolling with easing
     window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
     });
+    
+    // Update URL hash without scrolling (prevents double-scrolling)
+    setTimeout(() => {
+        history.pushState(null, null, `#${elementId}`);
+    }, 500);
 }
 
 /**

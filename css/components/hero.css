@@ -14,6 +14,19 @@
     max-width: 800px;
 }
 
+/* Adjust hero content width based on viewport width */
+@media (min-width: 1400px) {
+    .hero-content {
+        max-width: 1000px; /* Wider content for large screens */
+    }
+}
+
+@media (min-width: 2000px) {
+    .hero-content {
+        max-width: 1200px; /* Even wider for ultra-wide screens */
+    }
+}
+
 .hero-title {
     margin-bottom: var(--spacing-md);
     font-weight: 700;
@@ -33,9 +46,10 @@
 }
 
 .hero-subtitle {
-    font-size: var(--h3-size);
+    font-size: clamp(1.2rem, 2vw, 2rem);
     margin-bottom: var(--spacing-lg);
     color: var(--text-secondary);
+    max-width: 90%; /* Ensure readability on ultra-wide screens */
 }
 
 .hero-cta {
@@ -77,5 +91,16 @@
     
     .hero-socials {
         justify-content: center;
+    }
+}
+
+/* Optimize for larger screens */
+@media (min-width: 1600px) {
+    .social-icon {
+        font-size: 1.8rem;
+    }
+    
+    .hero-cta {
+        gap: var(--spacing-lg);
     }
 } 

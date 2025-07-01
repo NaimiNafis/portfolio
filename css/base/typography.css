@@ -2,6 +2,7 @@
 body {
     font-family: var(--font-family);
     color: var(--text-primary);
+    font-size: calc(16px + 0.1vw); /* Base font size scales slightly with viewport */
 }
 
 h1, h2, h3, h4 {
@@ -10,27 +11,44 @@ h1, h2, h3, h4 {
     line-height: 1.2;
 }
 
+/* Responsive heading sizes using clamp() for min, preferred, and max sizes */
 h1 {
-    font-size: var(--h1-size);
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Min: 40px, Preferred: 5vw, Max: 64px */
     font-weight: 700;
 }
 
 h2 {
-    font-size: var(--h2-size);
+    font-size: clamp(1.8rem, 4vw, 3rem); /* Min: 28.8px, Preferred: 4vw, Max: 48px */
 }
 
 h3 {
-    font-size: var(--h3-size);
+    font-size: clamp(1.2rem, 2.5vw, 2rem); /* Min: 19.2px, Preferred: 2.5vw, Max: 32px */
 }
 
 h4 {
-    font-size: var(--h4-size);
+    font-size: clamp(1rem, 1.5vw, 1.5rem); /* Min: 16px, Preferred: 1.5vw, Max: 24px */
     font-weight: 500;
 }
 
 p {
     margin-bottom: var(--spacing-md);
     line-height: 1.6;
+    /* For better readability on large screens, limit line length */
+    max-width: 70ch;
+}
+
+/* Larger screens get slightly larger text */
+@media (min-width: 1400px) {
+    body {
+        font-size: calc(18px + 0.1vw);
+    }
+}
+
+/* Super large screens (27"+) get even larger text for better readability */
+@media (min-width: 2000px) {
+    body {
+        font-size: calc(20px + 0.1vw);
+    }
 }
 
 a {
@@ -44,7 +62,7 @@ a:hover {
 
 .section-title {
     margin-bottom: var(--spacing-lg);
-    font-size: var(--h2-size);
+    font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: 1px;
 }
 
