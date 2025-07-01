@@ -21,15 +21,15 @@
 .project-list {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .project-item {
     position: relative;
-    padding: 2rem;
+    padding: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    overflow: hidden;
+    border-radius: 0;
 }
 
 .project-item::before {
@@ -41,12 +41,19 @@
     height: 100%;
     background: var(--hover-bg);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, border-radius 0.3s ease;
     pointer-events: none;
+    border-radius: 0;
+}
+
+.project-item:hover {
+    background-color: var(--hover-bg);
+    border-radius: 12px;
 }
 
 .project-item:hover::before {
     opacity: 1;
+    border-radius: 12px;
 }
 
 .project-main {
@@ -68,9 +75,8 @@
 .project-title {
     font-size: 2rem;
     font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .project-year {
@@ -273,13 +279,28 @@
 }
 
 .project-link {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: var(--small-size);
-    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
 }
 
 .project-link i {
     font-size: 1rem;
-} 
+}
+
+/* These styles are no longer needed since we're wrapping the entire card
+.project-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.project-title a:hover {
+    color: var(--accent-teal);
+}
+
+.project-item:hover .project-title a {
+    color: var(--accent-color);
+}
+*/ 

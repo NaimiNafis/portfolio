@@ -1,6 +1,0 @@
-This is a placeholder for your resume PDF.
-
-To complete your portfolio, you should:
-1. Replace this file with an actual PDF of your resume
-2. Make sure to name it "resume.pdf"
-3. Place it in the root directory of your portfolio website 
