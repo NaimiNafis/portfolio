@@ -65,7 +65,7 @@
 
 .timeline-content {
     padding: var(--spacing-md);
-    background: #fff;
+    background: var(--bg-secondary);
     position: relative;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
@@ -90,14 +90,31 @@
     left: 15px;
 }
 
-.timeline-title {
-    margin: var(--spacing-md) 0 var(--spacing-xs);
+.timeline-content h3.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent-gold) !important;
+}
+
+.timeline-item .timeline-content h3.timeline-title {
+    color: var(--accent-gold) !important;
+}
+
+.career .timeline-content h3.timeline-title {
+    color: var(--accent-gold) !important;
 }
 
 .timeline-company {
     font-weight: 500;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
+}
+
+.timeline-content p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
 }
 
 /* Responsive timeline */
