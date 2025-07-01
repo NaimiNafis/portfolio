@@ -303,4 +303,22 @@
 .project-item:hover .project-title a {
     color: var(--accent-color);
 }
-*/ 
+*/
+
+.more-projects {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.more-projects .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.more-projects .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+} 
