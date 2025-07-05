@@ -17,6 +17,11 @@
     padding: 0 1rem;
 }
 
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .about-grid {
     gap: var(--spacing-xl);
     align-items: center;
@@ -94,18 +99,28 @@
 
 .about-text {
     font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 3rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
     color: var(--text-secondary);
+}
+
+/* Core Philosophy Style */
+.core-philosophy {
+    font-size: 1.1em;
+    font-style: italic;
+    margin: 0.5rem 0 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-purple);
 }
 
 /* Tech Stack Styles */
 .tech-stack {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    width: 100%;
 }
 
 .tech-icon {
@@ -113,26 +128,32 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.5rem;
     transition: all 0.3s ease;
+    width: 80px; /* Fixed width */
 }
 
 .tech-icon i {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.25rem;
+    margin-bottom: 0.2rem;
     color: var(--text-primary);
     transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem; /* Fixed height */
 }
 
 .tech-icon span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
     transition: color 0.3s ease;
+    text-align: center;
 }
 
 .tech-icon:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .tech-icon:hover i,
@@ -147,47 +168,77 @@
     }
     
     .tech-stack {
-        max-width: 1100px;
+        max-width: 900px;
+        margin: 0.75rem auto 0;
+    }
+    
+    .tech-icon {
+        width: 85px; /* Slightly wider for large screens */
     }
     
     .tech-icon i {
-        font-size: 4rem;
-        height: 4rem;
-        width: 4rem;
+        font-size: 2.5rem;
+        height: 2.8rem;
     }
     
     .tech-icon span {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 992px) {
     .tech-stack {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        max-width: 700px;
+        margin: 0.75rem auto 0;
     }
 }
 
 @media (max-width: 768px) {
     .tech-stack {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem 1.5rem;
+        max-width: 500px;
+        margin: 0.75rem auto 0;
+    }
+    
+    .tech-icon {
+        width: 75px; /* Slightly narrower for medium screens */
     }
     
     .tech-icon i {
-        font-size: 3rem;
-        height: 3rem;
-        width: 3rem;
+        font-size: 2.25rem;
+        height: 2.5rem;
     }
     
     .about-text {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 }
 
 @media (max-width: 480px) {
     .tech-stack {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1rem;
+        max-width: 320px;
+        gap: 0.5rem;
     }
+    
+    .tech-icon {
+        width: 70px; /* Even narrower for small screens */
+    }
+    
+    .tech-icon i {
+        font-size: 2rem;
+        height: 2.25rem;
+    }
+    
+    .tech-icon span {
+        font-size: 0.8rem;
+    }
+}
+
+.about-section {
+    padding: var(--section-padding);
+    background-color: var(--bg-primary);
+}
+
+.about-text {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
 } 
