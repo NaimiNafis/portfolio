@@ -89,20 +89,16 @@ export function initContactForm() {
         e.preventDefault();
         
         if (validateForm()) {
-            // In a real application, you would send the form data to a server
-            const formData = new FormData(contactForm);
-            
-            // For demo purposes, simulate form submission
-            setTimeout(() => {
-                showFormMessage('success', 'Thank you! Your message has been sent.');
-                contactForm.reset();
-            }, 1000);
-            
-            // Actual form submission would look something like this:
-            /*
-            fetch('/api/contact', {
+            const name = contactForm.querySelector('#name').value.trim();
+            const email = contactForm.querySelector('#email').value.trim();
+            const message = contactForm.querySelector('#message').value.trim();
+
+            fetch('https://naimis-portfolio.onrender.com', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message })
             })
             .then(response => response.json())
             .then(data => {
@@ -116,7 +112,6 @@ export function initContactForm() {
             .catch(error => {
                 showFormMessage('error', 'An error occurred. Please try again later.');
             });
-            */
         }
     });
 } 
