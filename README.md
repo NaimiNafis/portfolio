@@ -1,6 +1,6 @@
 # Naimi Nafis - Portfolio
 
-[Link](https://naiminafis.github.io) <!-- Replace with your actual deployment URL -->
+[Portfolio Link](https://naiminafis.github.io) <!-- Replace with your actual deployment URL -->
 
 ![Portfolio Screenshot](assets/images/portfolio-screenshot.png) <!-- Consider adding a screenshot of your site -->
 
