@@ -35,6 +35,21 @@
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
+    position: relative;
+}
+
+/* Typewriter cursor blink */
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--accent-purple);
+    animation: blink 0.75s step-end infinite;
+    font-weight: 300;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-title span {
@@ -52,7 +67,7 @@
     left: 0;
     width: 80px;
     height: 4px;
-    background: var(--accent-gradient);
+    background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
     border-radius: 2px;
 }
 

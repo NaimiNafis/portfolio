@@ -1,4 +1,10 @@
 /* Animation Utilities */
+
+/* Hide elements before IntersectionObserver fires so they don't flash */
+.animate-on-scroll {
+    opacity: 0;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

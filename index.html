@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naimi Nafis</title>
+    <title>Naimi Nafis | Developer & Researcher</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Naimi Nafis - M1 researcher at Kyoto Institute of Technology, Software Engineer building full-stack apps and researching AI-generated code detection.">
+    <meta property="og:title" content="Naimi Nafis | Software Engineer & Researcher">
+    <meta property="og:description" content="Portfolio of Naimi Nafis - M1 researcher at KIT, building full-stack apps and researching AI-generated code detection.">
+    <meta property="og:image" content="assets/images/portfolio-screenshot.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Naimi Nafis | Software Engineer & Researcher">
+    <meta name="twitter:description" content="Portfolio of Naimi Nafis - M1 researcher at KIT, building full-stack apps and researching AI-generated code detection.">
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    
+
     <!-- Emoji Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <!-- Header -->
     <header>
         <div class="container flex-between">
@@ -25,7 +39,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#career">Career</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <!-- <li><a href="#contact">Contact</a></li> -->
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <button class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
@@ -39,7 +53,9 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title animate-on-scroll" data-animation="slide-in-up">Hi, I'm <span>Naimi Nafis</span> 👋</h1>
-                    <h2 class="hero-subtitle animate-on-scroll" data-animation="slide-in-up" data-delay="200">I write code, and I research how to make code write itself better.</h2>
+                    <h2 class="hero-subtitle animate-on-scroll" data-animation="fade-in" data-delay="200">
+                        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+                    </h2>
                     <div class="hero-cta animate-on-scroll" data-animation="slide-in-up" data-delay="400">
                         <a href="assets/docs/resume.pdf" class="btn btn-primary btn-icon" download>
                             <i class="fas fa-download"></i> Download Resume
@@ -67,13 +83,13 @@
             <div class="about-content">
                 <div class="about-text animate-on-scroll" data-animation="fade-in">
                     <p class="text-justify">
-                        I'm <strong style="color: #FED456;">Naimi Nafis</strong>, a Computer Science undergraduate at the <a href="https://www.kit.ac.jp/en/" target="_blank"><strong style="color: #FED456;">Kyoto Institute of Technology</strong></a> and a researcher in the <a href="https://kit-isel.github.io/" target="_blank"><strong style="color: #FED456;">Intelligent Software Engineering Lab</strong></a>. My research exposes the hidden flaws in modern AI code generators by testing if they can truly distinguish meaningful code from simple comments, paving the way for more reliable software.
+                        I'm <strong style="color: #FED456;">Naimi Nafis</strong>, an M1 researcher at the <a href="https://www.kit.ac.jp/en/" target="_blank"><strong style="color: #FED456;">Kyoto Institute of Technology</strong></a>, working in the <a href="https://kit-isel.github.io/" target="_blank"><strong style="color: #FED456;">Intelligent Software Engineering Lab</strong></a>. My research focuses on detecting AI-generated code and understanding how LLMs handle code semantics, work that directly impacts how reliably we can trust automated software.
                     </p>
                     <p class="core-philosophy text-justify">
-                        I thrive on <strong style="color: #47D8C0;">rapidly learning and applying new technologies</strong> to solve complex, real-world problems. This hands-on approach is central to how I build and innovate.
+                        I <strong style="color: #47D8C0;">learn fast and ship things</strong>. That's how I work: pick up a new tech, apply it to a real problem, move forward.
                     </p>
                     <p class="text-justify">
-                        To that end, I'm constantly expanding my toolkit, currently focusing on <strong style="color: #FED456;">Full-Stack JavaScript</strong> and <strong style="color: #FED456;">Machine Learning</strong>. Here are the primary technologies I work with:
+                        Right now I'm deepening my skills in <strong style="color: #FED456;">software engineering research</strong> while staying sharp on <strong style="color: #FED456;">full-stack development</strong>. Here are the technologies I work with:
                     </p>
                 </div>
                 <div class="tech-stack animate-on-scroll" data-animation="fade-in">
@@ -129,7 +145,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Career Section -->
     <section id="career" class="career section">
         <div class="container">
@@ -139,30 +155,30 @@
                     <!-- Timeline Item 1 -->
                     <div class="timeline-item timeline-item-right">
                         <div class="timeline-content">
-                            <span class="timeline-date">Present</span>
-                            <h3 class="timeline-title" style="color: #FED456;">Undergraduate Researcher</h3>
-                            <p class="timeline-company" style="color: #47D8C0;">AI Software Engineering Lab (知能ソフトウェア工学研究室), Kyoto Institute of Technology</p>
-                            <p>Analyzing the over-reliance of code LLMs on comments versus logic (Semantic Robustness), aiming to build more reliable detectors for AI-generated code.</p>
+                            <span class="timeline-date">April 2026 – Present</span>
+                            <h3 class="timeline-title" style="color: #FED456;">Graduate Researcher (M1)</h3>
+                            <p class="timeline-company" style="color: #47D8C0;">Intelligent Software Engineering Lab (知能ソフトウェア工学研究室), Kyoto Institute of Technology</p>
+                            <p>Researching LLM-generated code detection and code clone analysis. Investigating how code LLMs interpret semantics versus surface-level patterns, with the goal of building more accurate and robust detectors.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Timeline Item 2 -->
                     <div class="timeline-item timeline-item-left">
                         <div class="timeline-content">
-                            <span class="timeline-date">2022 - Present</span>
+                            <span class="timeline-date">2022 - March 2026</span>
                             <h3 class="timeline-title" style="color: #FED456;">B.E. in Information Science</h3>
                             <p class="timeline-company" style="color: #47D8C0;">Kyoto Institute of Technology</p>
-                            <p>Core coursework includes Object-Oriented Programming, Algorithms and Data Structures, and Software Engineering Principles.</p>
+                            <p>Studied algorithms, data structures, object-oriented programming, and software engineering. Graduated March 2026.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Timeline Item 3 -->
                     <div class="timeline-item timeline-item-right">
                         <div class="timeline-content">
                             <span class="timeline-date">2024 - 2025</span>
-                            <h3 class="timeline-title" style="color: #FED456;">Web Development Journey</h3>
-                            <p class="timeline-company" style="color: #47D8C0;">Self-Taught via The Odin Project, etc.</p>
-                            <p>A self-sufficient aspiring full-stack developer who has built and deployed multiple web applications using technologies such as Python (Flask) and React.</p>
+                            <h3 class="timeline-title" style="color: #FED456;">Self-Taught Full-Stack Development</h3>
+                            <p class="timeline-company" style="color: #47D8C0;">The Odin Project &amp; personal projects</p>
+                            <p>Built multiple web and mobile apps independently: browser extensions, games, mobile apps, using Python, React, Ruby on Rails, and Flutter. Still going.</p>
                         </div>
                     </div>
                 </div>
@@ -252,7 +268,7 @@
                             </div>
                         </div>
                     </a>
-                    
+
                     <!-- More Projects Button -->
                     <div class="more-projects animate-on-scroll" data-animation="fade-in" data-delay="300">
                         <a href="https://github.com/NaimiNafis" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-icon">
@@ -264,16 +280,16 @@
         </div>
     </section>
 
-    <!-- Contact Section
+    <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-grid">
                     <div class="contact-info animate-on-scroll" data-animation="fade-in">
-                        <h2 class="contact-title">Contact Me :)</h2>
-                        <p class="contact-text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+                        <h2 class="contact-title">Let's Talk</h2>
+                        <p class="contact-text">Whether it's a project, a role, or just a question, I'm happy to hear from you. Drop me a message!</p>
                     </div>
-                    
+
                     <div class="contact-form-container animate-on-scroll" data-animation="fade-in">
                         <form class="contact-form">
                             <div class="form-group">
@@ -288,13 +304,18 @@
                             <div class="form-group">
                                 <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or idea..." required></textarea>
                             </div>
+                            <!-- Honeypot: hidden from real users, bots fill it -->
+                            <div class="form-group" aria-hidden="true" style="display:none;">
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                            </div>
                             <button type="submit" class="form-submit">
                                 <i class="fas fa-paper-plane"></i> Send Message
                             </button>
                         </form>
+                        <div class="form-message" style="display:none;"></div>
                     </div>
                 </div>
-                
+
                 <div class="contact-direct animate-on-scroll" data-animation="fade-in">
                     <div class="contact-direct-inner">
                         <p>You can also reach me directly at <a href="mailto:naiminafis@gmail.com">naiminafis@gmail.com</a></p>
@@ -302,14 +323,14 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content flex-between">
                 <div class="footer-copyright">
-                    <p>NaimiNafis ©2025 - Privacy Policy</a></p>
+                    <p>NaimiNafis ©2026</p>
                 </div>
                 <div class="footer-socials">
                     <a href="https://github.com/NaimiNafis" target="_blank" rel="noopener noreferrer" class="footer-social"><i class="fab fa-github"></i></a>
@@ -319,6 +340,13 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js" type="module"></script>
 </body>
-</html> 
+</html>

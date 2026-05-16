@@ -98,12 +98,12 @@
 
 .project-description {
     max-width: 500px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    margin-top: 2rem;
-    margin-left: 20px;
+    opacity: 0.55;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.3s ease;
+    margin-top: 1rem;
+    margin-left: 0;
 }
 
 .project-description p {
@@ -132,8 +132,6 @@
 
 .project-item:hover .project-description {
     opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
 }
 
 /* Responsive Adjustments */
@@ -160,8 +158,8 @@
         transform: translateX(10px);
     }
 
-    .project-item:hover .project-description {
-        margin-left: 10px;
+    .project-description {
+        opacity: 0.75;
     }
 }
 
