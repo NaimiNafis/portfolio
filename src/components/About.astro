@@ -31,12 +31,6 @@ const experience: Row[] = [
   { role: 'B.Eng. Information Science', orgs: [kit], dates: 'Apr 2022 – Mar 2026' },
 ];
 
-const skills: Record<string, string[]> = {
-  Languages: ['Go', 'Python', 'TypeScript', 'JavaScript', 'Java', 'C'],
-  Frameworks: ['React', 'Next.js', 'FastAPI', 'Flask', 'Flutter'],
-  Infra: ['PostgreSQL', 'Supabase', 'Docker', 'GitHub Actions', 'Azure', 'Git'],
-  'AI tooling': ['Google ADK', 'A2A', 'MCP'],
-};
 ---
 
 <section id="about">
@@ -65,44 +59,23 @@ const skills: Record<string, string[]> = {
       ))
     }
   </ul>
-
-  <h2>Skills</h2>
-  <dl>
-    {
-      Object.entries(skills).map(([group, items]) => (
-        <div>
-          <dt>{group}</dt>
-          <dd>{items.join(' · ')}</dd>
-        </div>
-      ))
-    }
-  </dl>
 </section>
 
+
 <style>
-  h2 {
-    margin: 0 0 1.5rem;
-    font-size: 2rem;
-    font-weight: 800;
-  }
-  h2:not(:first-child) {
-    margin-top: 3.5rem;
-  }
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  li,
-  dl > div {
+  li {
     display: grid;
     grid-template-columns: 14rem 1fr;
     gap: 0.25rem 2rem;
     padding-block: 1.25rem;
     border-top: 1px solid var(--line);
   }
-  .dates,
-  dt {
+  .dates {
     font-weight: 600;
     color: var(--muted);
   }
@@ -118,16 +91,9 @@ const skills: Record<string, string[]> = {
   .place {
     color: var(--ink);
   }
-  dl {
-    margin: 0;
-  }
-  dd {
-    margin: 0;
-  }
 
   @media (max-width: 640px) {
-    li,
-    dl > div {
+    li {
       grid-template-columns: 1fr;
     }
   }

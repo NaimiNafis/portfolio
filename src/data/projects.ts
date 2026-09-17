@@ -4,7 +4,7 @@ export interface Link {
 }
 
 export interface Project {
-  /** Image is read from src/assets/projects/<slug>.(png|jpg|webp); without it the card shows a name tile. */
+  /** Media is read from src/assets/projects/<slug>.mp4 (looping demo) or <slug>.(png|jpg|webp) (screenshot, also the video poster); without either the card shows a name tile. */
   slug: string;
   title: string;
   tag: string;

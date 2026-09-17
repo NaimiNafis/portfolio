@@ -6,9 +6,16 @@ const base = import.meta.env.BASE_URL;
   <a class="logo" href="#top" aria-label="Naimi Nafis, back to top">
     <img src={`${base}me.png`} alt="" width="48" height="48" />
   </a>
-  <nav aria-label="Main">
+  <button class="menu-button" type="button" popovertarget="site-menu" aria-label="Menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"></path>
+    </svg>
+  </button>
+  <!-- Inline pills on wide screens; on phones the same nav is a popover opened by the menu button. -->
+  <nav id="site-menu" popover aria-label="Main">
     <a class="pill" href="#work">Work</a>
     <a class="pill" href="#about">About</a>
+    <a class="pill" href="#process">Process</a>
     <a class="pill" href={`${base}resume.pdf`} target="_blank" rel="noopener">Resume</a>
   </nav>
 </header>
@@ -26,7 +33,9 @@ const base = import.meta.env.BASE_URL;
       event.preventDefault();
       const start = window.scrollY;
       const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-      const end = Math.max(0, target.getBoundingClientRect().top + start - margin);
+      // Clamp to the real scroll range so sections near the page end still ease to a stop.
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const end = Math.min(maxScroll, Math.max(0, target.getBoundingClientRect().top + start - margin));
       const t0 = performance.now();
       const step = (now: number) => {
         const t = Math.min(1, (now - t0) / DURATION);
@@ -36,6 +45,12 @@ const base = import.meta.env.BASE_URL;
       requestAnimationFrame(step);
       history.pushState(null, '', link.hash);
     });
+  });
+
+  // Close the phone menu once a link in it is chosen.
+  const menu = document.querySelector<HTMLElement>('#site-menu');
+  menu?.addEventListener('click', (event) => {
+    if ((event.target as Element).closest('a') && menu.matches(':popover-open')) menu.hidePopover();
   });
 </script>
 
@@ -64,10 +79,6 @@ const base = import.meta.env.BASE_URL;
     width: 100%;
     height: 100%;
   }
-  nav {
-    display: flex;
-    gap: 0.25rem;
-  }
   .pill {
     padding: 0.55rem 1rem;
     border-radius: 999px;
@@ -79,5 +90,83 @@ const base = import.meta.env.BASE_URL;
   .pill:hover {
     background: var(--hover);
     color: var(--ink);
+  }
+  .menu-button {
+    display: none;
+  }
+
+  /* Wide screens: undo the browser's popover styles so the nav is a plain row of pills. */
+  @media (min-width: 641px) {
+    nav {
+      position: static;
+      display: flex;
+      gap: 0.25rem;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: visible;
+      background: none;
+      color: inherit;
+    }
+  }
+
+  /* Phones: three-bar button opens the nav as a small panel that fades in. */
+  @media (max-width: 640px) {
+    .menu-button {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: none;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background-color 0.35s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    @media (hover: hover) {
+      .menu-button:hover {
+        background: var(--hover);
+      }
+    }
+    .menu-button svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+    nav {
+      position: fixed;
+      inset: 5.25rem var(--gutter) auto auto;
+      min-width: 12rem;
+      margin: 0;
+      padding: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg);
+      color: var(--ink);
+      box-shadow: 0 12px 32px rgb(20 20 20 / 0.12);
+      opacity: 0;
+      transition:
+        opacity 0.25s ease,
+        display 0.25s allow-discrete,
+        overlay 0.25s allow-discrete;
+    }
+    nav:popover-open {
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+    }
+    @starting-style {
+      nav:popover-open {
+        opacity: 0;
+      }
+    }
+    .pill {
+      padding: 0.75rem 1rem;
+      font-size: 1.15rem;
+    }
   }
 </style>

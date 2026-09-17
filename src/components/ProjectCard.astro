@@ -10,13 +10,27 @@ const { project } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*.{png,jpg,jpeg,webp}', {
   eager: true,
 });
-const image = Object.entries(images).find(([path]) => path.split('/').pop()?.split('.')[0] === project.slug)?.[1];
+const videos = import.meta.glob<string>('../assets/projects/*.mp4', { eager: true, query: '?url', import: 'default' });
+const slugOf = (path: string) => path.split('/').pop()?.split('.')[0];
+const image = Object.entries(images).find(([path]) => slugOf(path) === project.slug)?.[1];
+const video = Object.entries(videos).find(([path]) => slugOf(path) === project.slug)?.[1];
 ---
 
 <article style={`--color: ${project.color}`}>
   <div class="frame">
     {
-      image ? (
+      video ? (
+        <video
+          src={video}
+          poster={image?.default.src}
+          aria-label={`Demo of ${project.title}`}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        />
+      ) : image ? (
         <Image src={image.default} alt={`Screenshot of ${project.title}`} width={880} />
       ) : (
         <span class="tile" aria-hidden="true">
@@ -45,12 +59,20 @@ const image = Object.entries(images).find(([path]) => path.split('/').pop()?.spl
   </ul>
 </article>
 
+<script>
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLVideoElement>('.frame video').forEach((video) => video.pause());
+  }
+</script>
+
 <style>
   article {
     display: flex;
     flex-direction: column;
   }
   .frame {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -59,6 +81,24 @@ const image = Object.entries(images).find(([path]) => path.split('/').pop()?.spl
     border-radius: 12px;
     overflow: hidden;
     background: var(--color);
+  }
+  .frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+  }
+  .frame:has(video) {
+    padding: 0;
+  }
+  .frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .frame :global(img) {
     display: block;

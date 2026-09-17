@@ -9,7 +9,7 @@ const base = import.meta.env.BASE_URL;
 <section class="hero" id="top">
   <div class="intro">
     <h1>Hi, I'm Naimi</h1>
-    <p class="lede">Full-stack engineer in Kyoto, building AI agents.</p>
+    <p class="lede">Full-stack software engineer and researcher in Kyoto, Japan.</p>
     <dl>
       <div>
         <dt>Currently</dt>
@@ -26,10 +26,10 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <aside>
-    <div class="avatar">
-      <Image class="photo" src={profile} alt="Naimi Nafis" width={800} loading="eager" />
+    <button type="button" class="avatar" aria-pressed="false" aria-label="Naimi Nafis: switch between photo and drawing">
+      <Image class="photo" src={profile} alt="" width={800} loading="eager" />
       <img class="drawing" src={`${base}me.png`} alt="" width="256" height="256" />
-    </div>
+    </button>
     <p>
       I build backend and frontend features for production SaaS at{' '}
       <a href="https://devtech.pro/en" target="_blank" rel="noopener">DevTech.Pro</a> (Go, Python, React) and research
@@ -43,6 +43,13 @@ const base = import.meta.env.BASE_URL;
     <Socials />
   </aside>
 </section>
+
+<script>
+  const avatar = document.querySelector<HTMLButtonElement>('.avatar');
+  avatar?.addEventListener('click', () => {
+    avatar.setAttribute('aria-pressed', String(avatar.getAttribute('aria-pressed') !== 'true'));
+  });
+</script>
 
 <style>
   .hero {
@@ -85,13 +92,23 @@ const base = import.meta.env.BASE_URL;
     padding-left: clamp(2rem, 4vw, 3rem);
     border-left: 1px solid var(--line);
   }
-  /* Photo slowly fades into the drawing on hover. */
+  /* Photo fades into the drawing: on hover with a mouse, or tap to toggle on touch screens. */
   .avatar {
     position: relative;
+    display: block;
     width: 11rem;
     height: 11rem;
+    padding: 0;
+    border: 0;
     border-radius: 50%;
+    background: none;
     overflow: clip;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .avatar:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
   }
   /* Crop knob: a 680px square around the face (centre 785, 930) of the 1536x2048 photo. */
   .avatar :global(.photo) {
@@ -103,9 +120,6 @@ const base = import.meta.env.BASE_URL;
     top: -86.8%;
     transition: opacity 0.8s ease;
   }
-  .avatar:hover :global(.photo) {
-    opacity: 0;
-  }
   .drawing {
     position: absolute;
     inset: 0;
@@ -114,8 +128,20 @@ const base = import.meta.env.BASE_URL;
     opacity: 0;
     transition: opacity 0.8s ease;
   }
-  .avatar:hover .drawing {
+  .avatar[aria-pressed='true'] :global(.photo) {
+    opacity: 0;
+  }
+  .avatar[aria-pressed='true'] .drawing {
     opacity: 1;
+  }
+  /* Touch screens fake a sticky :hover after a tap, so hover only counts with a real pointer. */
+  @media (hover: hover) {
+    .avatar:hover :global(.photo) {
+      opacity: 0;
+    }
+    .avatar:hover .drawing {
+      opacity: 1;
+    }
   }
   aside p {
     margin: 1rem 0 0;

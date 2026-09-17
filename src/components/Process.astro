@@ -1,0 +1,249 @@
+---
+import type { SimpleIcon } from 'simple-icons';
+import {
+  siC,
+  siChromewebstore,
+  siClaude,
+  siConfluence,
+  siDocker,
+  siFastapi,
+  siFlask,
+  siFlutter,
+  siGit,
+  siGithubactions,
+  siGo,
+  siGooglegemini,
+  siJira,
+  siLinux,
+  siNextdotjs,
+  siOpenapiinitiative,
+  siOpenjdk,
+  siPostgresql,
+  siPytest,
+  siPython,
+  siReact,
+  siRuff,
+  siStripe,
+  siSupabase,
+  siTypescript,
+  siVercel,
+} from 'simple-icons';
+
+interface Tool {
+  name: string;
+  icon?: SimpleIcon;
+}
+
+interface Step {
+  title: string;
+  text: string;
+  tools: Tool[];
+}
+
+const steps: Step[] = [
+  {
+    title: 'Understand',
+    text: 'I read before I write. I run the system locally, reproduce the problem, and trace it across backend and frontend until I can name the root cause; on MightClick I wrote up a codebase mid-migration on three axes on my first day. Then I ask the people who know: in English with my remote European team, in Japanese (JLPT N2) with my university team, and in Malay at home.',
+    tools: [
+      { name: 'Linux', icon: siLinux },
+      { name: 'Docker', icon: siDocker },
+      { name: 'Git', icon: siGit },
+      { name: 'OpenAPI', icon: siOpenapiinitiative },
+      { name: 'Jira', icon: siJira },
+      { name: 'Confluence', icon: siConfluence },
+    ],
+  },
+  {
+    title: 'Build',
+    text: 'I build the feature end to end, and I put rules where the client cannot skip them. On Cooriroo, per-row count fetches became a single Go endpoint with its contract pinned by tests. On Kamogawa Commons, vote limits and geofences live in Postgres behind row-level security, not in React. Go and Python are my daily languages; Java and C are the foundations from university, and Flask is where my first backends started.',
+    tools: [
+      { name: 'Go', icon: siGo },
+      { name: 'Python', icon: siPython },
+      { name: 'TypeScript', icon: siTypescript },
+      { name: 'Java', icon: siOpenjdk },
+      { name: 'C', icon: siC },
+      { name: 'FastAPI', icon: siFastapi },
+      { name: 'Flask', icon: siFlask },
+      { name: 'React', icon: siReact },
+      { name: 'Next.js', icon: siNextdotjs },
+      { name: 'PostgreSQL', icon: siPostgresql },
+      { name: 'Supabase', icon: siSupabase },
+      { name: 'Flutter', icon: siFlutter },
+    ],
+  },
+  {
+    title: 'Ship',
+    text: "Nothing counts until real users have it. I set up the checks that make shipping boring: MightClick's backend went from no automation to linting, tests and strict typing blocking every pull request, with production behind a manual deploy. Three of my Cooriroo features reached production in a single release.",
+    tools: [
+      { name: 'GitHub Actions', icon: siGithubactions },
+      { name: 'pytest', icon: siPytest },
+      { name: 'ruff', icon: siRuff },
+      { name: 'mypy' },
+      { name: 'Vercel', icon: siVercel },
+      { name: 'Azure' },
+      { name: 'Stripe', icon: siStripe },
+      { name: 'Chrome Web Store', icon: siChromewebstore },
+    ],
+  },
+  {
+    title: 'Work with AI',
+    text: "I treat AI as a teammate that needs good context. Each project I work on has a folder of markdown notes and conventions the assistant reads first, and I keep the judgement calls for myself. I also build agents as product features: I own Cooriroo's trip-creation agent on Google ADK and A2A.",
+    tools: [
+      { name: 'Claude Code', icon: siClaude },
+      { name: 'Google ADK' },
+      { name: 'A2A' },
+      { name: 'MCP' },
+      { name: 'Gemini API', icon: siGooglegemini },
+      { name: 'Azure OpenAI' },
+    ],
+  },
+];
+---
+
+<section id="process">
+  <h2>How I work</h2>
+  <p class="intro">Four steps, and the tools I reach for at each one.</p>
+  <ol>
+    {
+      steps.map((step, i) => (
+        <li>
+          <div class="marker">
+            <span class="node">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+          </div>
+          <div class="body">
+            <p>{step.text}</p>
+            <ul class="tools" aria-label={`Tools for ${step.title}`}>
+              {step.tools.map((tool) => (
+                <li>
+                  {tool.icon && (
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d={tool.icon.path} />
+                    </svg>
+                  )}
+                  {tool.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  /* Flow: numbered nodes on the left, joined by a line that runs down to the next step. */
+  section {
+    --node: 2.75rem;
+    --step-gap: 2rem;
+    --flow: #a9a9a2;
+    margin-top: 4.5rem;
+  }
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  .intro {
+    margin: 0 0 2rem;
+    color: var(--muted);
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ol > li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 0.75rem 2rem;
+    padding-bottom: var(--step-gap);
+  }
+  ol > li:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--node) / 2 - 1px);
+    top: calc(var(--node) + 0.4rem);
+    bottom: 0.45rem;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--flow);
+  }
+  /* Arrowhead at the end of each connector, pointing to the next step. */
+  ol > li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(var(--node) / 2 - 5px);
+    bottom: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--flow);
+    border-bottom: 2px solid var(--flow);
+    transform: rotate(45deg);
+  }
+  .marker {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    align-self: start;
+  }
+  .node {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: var(--node);
+    height: var(--node);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--bg);
+    font-size: 0.85rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .body {
+    padding-top: 0.6rem;
+  }
+  .body p {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--ink);
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+  .tools li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .tools svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    fill: currentColor;
+  }
+
+  /* Phones: content sits beside the line, so the flow runs down the left edge. */
+  @media (max-width: 640px) {
+    ol > li {
+      grid-template-columns: 1fr;
+    }
+    .body {
+      padding: 0 0 0 calc(var(--node) + 0.9rem);
+    }
+  }
+</style>
