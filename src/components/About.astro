@@ -1,19 +1,34 @@
 ---
-const experience = [
+import type { Link } from '../data/projects';
+
+const devtech: Link = { label: 'DevTech.Pro', href: 'https://devtech.pro/en' };
+const isel: Link = { label: 'KIT-ISEL', href: 'https://kit-isel.github.io/member/' };
+const kit: Link = { label: 'Kyoto Institute of Technology', href: 'https://www.kit.ac.jp/' };
+
+interface Row {
+  role: string;
+  orgs: Link[];
+  note?: string;
+  dates: string;
+  line?: string;
+}
+
+const experience: Row[] = [
   {
     role: 'Software Engineer',
-    place: 'DevTech.Pro · part-time, remote',
+    orgs: [devtech],
+    note: 'part-time, remote',
     dates: 'Jun 2026 – Present',
     line: 'Public Chrome Web Store launch and CI/CD for MightClick; trip wizard, heat map and aggregation endpoint for Cooriroo.',
   },
   {
     role: 'Graduate Researcher',
-    place: 'KIT-ISEL, Kyoto Institute of Technology',
+    orgs: [isel, kit],
     dates: 'Apr 2025 – Present',
     line: 'Detecting LLM-generated code. Built the lab attendance system and a Dockerised benchmark for three detectors.',
   },
-  { role: 'M.S. Computer Science & Engineering', place: 'Kyoto Institute of Technology', dates: 'Apr 2026 – Mar 2028' },
-  { role: 'B.Eng. Information Science', place: 'Kyoto Institute of Technology', dates: 'Apr 2022 – Mar 2026' },
+  { role: 'M.S. Computer Science & Engineering', orgs: [kit], dates: 'Apr 2026 – Mar 2028' },
+  { role: 'B.Eng. Information Science', orgs: [kit], dates: 'Apr 2022 – Mar 2026' },
 ];
 
 const skills: Record<string, string[]> = {
@@ -33,7 +48,17 @@ const skills: Record<string, string[]> = {
           <span class="dates">{item.dates}</span>
           <div>
             <h3>{item.role}</h3>
-            <p class="place">{item.place}</p>
+            <p class="place">
+              {item.orgs.map((org, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={org.href} target="_blank" rel="noopener">
+                    {org.label}
+                  </a>
+                </>
+              ))}
+              {item.note && ` · ${item.note}`}
+            </p>
             {item.line && <p>{item.line}</p>}
           </div>
         </li>

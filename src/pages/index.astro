@@ -7,9 +7,9 @@ import Footer from '../components/Footer.astro';
 import { projects } from '../data/projects';
 
 const base = import.meta.env.BASE_URL;
-const title = 'Naimi Nafis · Software Engineer · Kyoto';
+const title = 'Naimi Nafis · Full-Stack Engineer · Kyoto';
 const description =
-  'Software engineer in Kyoto. Builds production SaaS at DevTech.Pro (Go, Python, React) and researches LLM-generated code detection at Kyoto Institute of Technology.';
+  'Full-stack engineer in Kyoto. Builds production SaaS at DevTech.Pro (Go, Python, React) and researches LLM-generated code detection at Kyoto Institute of Technology.';
 const ogImage = new URL(`${base}og.png`, Astro.site);
 ---
 
@@ -83,6 +83,18 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
     opacity: 0.18;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Inline links in running text. */
+  :where(p, dd) a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  :where(p, dd) a:hover {
+    color: var(--ink);
+    text-decoration-color: currentColor;
   }
   .wrap {
     max-width: 1320px;
