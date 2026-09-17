@@ -18,7 +18,7 @@ export const projects: Project[] = [
   {
     slug: 'mightclick',
     title: 'MightClick',
-    tag: 'Work',
+    tag: 'Shipped',
     links: [
       { label: 'Live', href: 'https://mightclick.ai/' },
       {
@@ -27,31 +27,35 @@ export const projects: Project[] = [
       },
     ],
     description:
-      'AI assistant Chrome extension. Joined mid-migration and owned the path to public release: MD3 panel rewrite, production Azure/Stripe setup, store listing, and a CI pipeline from zero (ruff, pytest, strict mypy, staged deploys).',
+      'Led an AI Chrome extension from a half-migrated backend to public launch, rebuilding the in-page panel and setting up live payments and CI. 37 installs, up to 4 people using it at once.',
     meta: 'DevTech.Pro · 2026',
     color: '#4B4FC4',
   },
   {
     slug: 'cooriroo',
     title: 'Cooriroo',
-    tag: 'Work',
+    tag: 'Shipped',
     links: [{ label: 'Live', href: 'https://cooriroo.com/' }],
     description:
-      'Fleet-management SaaS in Go and Next.js. Shipped a rebuilt trip wizard, a destinations heat map on a new Go endpoint, live-fleet map/list interaction, and one aggregated endpoint replacing per-row fetches. Now building its AI agent.',
+      'Built the trip-creation wizard, destinations heat map and live-fleet map for a fleet-management SaaS, across the Go backend and Next.js frontend. All three shipped to production in one release.',
     meta: 'DevTech.Pro · 2026',
     color: '#2F6B58',
   },
   {
-    slug: 'kamogawa-commons',
-    title: 'Kamogawa Commons',
-    tag: 'Class',
+    slug: 'kamocomo',
+    title: 'KamoComo',
+    tag: 'Live',
     links: [
       { label: 'Demo', href: 'https://kamocomo.vercel.app' },
+      {
+        label: 'Case study',
+        href: 'https://docs.google.com/presentation/d/1uBzjtzy4lVQJ-pYMo_XD9Un__vCdnv1kZeoFxwDLTag/mobilepresent?slide=id.g3f94c9a7a84_0_0',
+      },
       { label: 'GitHub', href: 'https://github.com/NaimiNafis/kamocomo' },
     ],
     description:
-      'Bilingual web app teaching the unwritten etiquette of the Kamogawa riverbank, reached through QR codes on duck figures. Vote limits, auto-hide and geofenced stamps live in Postgres behind RLS, triggers and RPCs, so the client cannot bypass them.',
-    meta: 'Case study · 2026',
+      "Led engineering and design with five Japanese students on a bilingual app that teaches the unwritten etiquette of Kyoto's Kamogawa riverbank, reached through QR codes on duck figures.",
+    meta: 'KIT course · 2026',
     color: '#34688C',
   },
   {
@@ -60,7 +64,7 @@ export const projects: Project[] = [
     tag: 'Hackathon 3rd / 24 teams',
     links: [{ label: 'GitHub', href: 'https://github.com/NaimiNafis/Lyrika' }],
     description:
-      'Browser extension that recognises the song playing in any tab and shows lyrics, translations and similar songs, using ACRCloud, Genius and Gemini with a Flask backend.',
+      'Built a browser extension that names the song playing in any tab and shows its lyrics, translations and similar songs. Placed 3rd of 24 teams at Giiku CAMP Vol. 6.',
     meta: 'Giiku CAMP Vol. 6 · 2025',
     color: '#A8416A',
   },
@@ -70,7 +74,7 @@ export const projects: Project[] = [
     tag: 'Hackathon',
     links: [{ label: 'GitHub', href: 'https://github.com/NaimiNafis/QRious' }],
     description:
-      'Flutter QR scanner that checks URLs for safety entirely on-device, so it works offline and keeps data private.',
+      'Built a Flutter QR scanner that checks links for safety entirely on-device, so it works offline and never sends your data anywhere.',
     meta: 'KIT-ISEL · 2025',
     color: '#8C5A14',
   },
@@ -80,7 +84,7 @@ export const projects: Project[] = [
     tag: 'Hackathon',
     links: [{ label: 'GitHub', href: 'https://github.com/NaimiNafis/readoku' }],
     description:
-      'Browser extension that translates selected Japanese text in place, with caching and batching that cut translation time by 30%.',
+      'Built a browser extension that translates selected Japanese in place, so learners never switch tabs. Caching and batching made it 30% faster than the first prototype.',
     meta: 'TrackJob · 2025',
     color: '#6E54A8',
   },
