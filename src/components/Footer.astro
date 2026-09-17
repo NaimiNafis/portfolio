@@ -1,0 +1,30 @@
+---
+import Socials from './Socials.astro';
+---
+
+<footer>
+  <div class="wrap">
+    <p>© {new Date().getFullYear()} Naimi Nafis</p>
+    <Socials />
+  </div>
+</footer>
+
+<style>
+  footer {
+    margin-top: 6rem;
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 2.5rem;
+  }
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
+</style>

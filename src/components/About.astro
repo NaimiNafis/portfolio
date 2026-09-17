@@ -1,0 +1,109 @@
+---
+const experience = [
+  {
+    role: 'Software Engineer',
+    place: 'DevTech.Pro · part-time, remote',
+    dates: 'Jun 2026 – Present',
+    line: 'Public Chrome Web Store launch and CI/CD for MightClick; trip wizard, heat map and aggregation endpoint for Cooriroo.',
+  },
+  {
+    role: 'Graduate Researcher',
+    place: 'KIT-ISEL, Kyoto Institute of Technology',
+    dates: 'Apr 2025 – Present',
+    line: 'Detecting LLM-generated code. Built the lab attendance system and a Dockerised benchmark for three detectors.',
+  },
+  { role: 'M.S. Computer Science & Engineering', place: 'Kyoto Institute of Technology', dates: 'Apr 2026 – Mar 2028' },
+  { role: 'B.Eng. Information Science', place: 'Kyoto Institute of Technology', dates: 'Apr 2022 – Mar 2026' },
+];
+
+const skills: Record<string, string[]> = {
+  Languages: ['Go', 'Python', 'TypeScript', 'JavaScript', 'Java', 'C'],
+  Frameworks: ['React', 'Next.js', 'FastAPI', 'Flask', 'Flutter'],
+  Infra: ['PostgreSQL', 'Supabase', 'Docker', 'GitHub Actions', 'Azure', 'Git'],
+  'AI tooling': ['Google ADK', 'A2A', 'MCP'],
+};
+---
+
+<section id="about">
+  <h2>About</h2>
+  <ul>
+    {
+      experience.map((item) => (
+        <li>
+          <span class="dates">{item.dates}</span>
+          <div>
+            <h3>{item.role}</h3>
+            <p class="place">{item.place}</p>
+            {item.line && <p>{item.line}</p>}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Skills</h2>
+  <dl>
+    {
+      Object.entries(skills).map(([group, items]) => (
+        <div>
+          <dt>{group}</dt>
+          <dd>{items.join(' · ')}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<style>
+  h2 {
+    margin: 0 0 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  h2:not(:first-child) {
+    margin-top: 3.5rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li,
+  dl > div {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 0.25rem 2rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .dates,
+  dt {
+    font-weight: 600;
+    color: var(--muted);
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  p {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+  }
+  .place {
+    color: var(--ink);
+  }
+  dl {
+    margin: 0;
+  }
+  dd {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    li,
+    dl > div {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

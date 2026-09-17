@@ -1,0 +1,105 @@
+---
+import Socials from './Socials.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="hero" id="top">
+  <div class="intro">
+    <h1>Hi, I'm Naimi</h1>
+    <p class="lede">Software engineer in Kyoto, building AI agents.</p>
+    <dl>
+      <div>
+        <dt>Currently</dt>
+        <dd>DevTech.Pro · KIT-ISEL</dd>
+      </div>
+      <div>
+        <dt>Education</dt>
+        <dd>M.S. KIT, 2028</dd>
+      </div>
+    </dl>
+  </div>
+
+  <aside>
+    <img src={`${base}me.png`} alt="Hand-drawn portrait of Naimi" width="112" height="112" />
+    <p>
+      I build backend and frontend features for production SaaS at DevTech.Pro (Go, Python, React) and research
+      LLM-generated code detection at Kyoto Institute of Technology. Currently specialising in AI agents with Google
+      ADK and A2A.
+    </p>
+    <p lang="ja">
+      京都を拠点とするソフトウェアエンジニアです。DevTech.ProでGo・Python・Reactを使ったSaaS開発に携わりながら、京都工芸繊維大学でLLMが生成したコードの検出を研究しています。日本語（JLPT
+      N2）と英語で仕事ができます。
+    </p>
+    <Socials />
+  </aside>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    padding-block: clamp(2rem, 6vw, 4rem);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .lede {
+    margin: 0.5rem 0 0;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1.5rem;
+    margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+  }
+  dt {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.25rem;
+    color: var(--muted);
+  }
+  aside {
+    padding-left: clamp(2rem, 4vw, 3rem);
+    border-left: 1px solid var(--line);
+  }
+  img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  aside p {
+    margin: 1rem 0 0;
+    font-size: 1.15rem;
+    color: var(--muted);
+  }
+  aside :global(.socials) {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    aside {
+      padding-left: 0;
+      padding-top: 2rem;
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>
