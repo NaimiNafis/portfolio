@@ -13,6 +13,32 @@ const base = import.meta.env.BASE_URL;
   </nav>
 </header>
 
+<script>
+  // Slow, eased scroll to in-page sections. Respects the OS "reduce motion" setting (then it jumps).
+  const DURATION = 900;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const ease = (t: number) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector<HTMLElement>(link.hash);
+      if (!target || reduceMotion.matches) return;
+      event.preventDefault();
+      const start = window.scrollY;
+      const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      const end = Math.max(0, target.getBoundingClientRect().top + start - margin);
+      const t0 = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - t0) / DURATION);
+        window.scrollTo(0, start + (end - start) * ease(t));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      history.pushState(null, '', link.hash);
+    });
+  });
+</script>
+
 <style>
   header {
     position: sticky;

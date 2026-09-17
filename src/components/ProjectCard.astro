@@ -69,8 +69,10 @@ const image = Object.entries(images).find(([path]) => path.split('/').pop()?.spl
     border-radius: 8px 8px 0 0;
     transition: transform 0.3s ease;
   }
-  article:hover .frame :global(img) {
-    transform: translateY(-4px);
+  @media (prefers-reduced-motion: no-preference) {
+    article:hover .frame :global(img) {
+      transform: translateY(-4px);
+    }
   }
   .tile {
     align-self: center;

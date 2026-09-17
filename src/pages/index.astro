@@ -55,15 +55,13 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
     --muted: #5c5c57;
     --line: #d4d4ce;
     --hover: rgb(20 20 20 / 0.08);
+    --gutter: clamp(1rem, 3vw, 2rem);
     color-scheme: light;
   }
   *,
   *::before,
   *::after {
     box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
   }
   body {
     margin: 0;
@@ -84,6 +82,15 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  /* Every link and button eases its colours on hover. */
+  a {
+    transition:
+      color 0.35s ease,
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      text-decoration-color 0.35s ease,
+      opacity 0.35s ease;
+  }
   /* Inline links in running text. */
   :where(p, dd) a {
     color: inherit;
@@ -99,7 +106,7 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
   .wrap {
     max-width: 1320px;
     margin-inline: auto;
-    padding-inline: clamp(1rem, 3vw, 2rem);
+    padding-inline: var(--gutter);
   }
   section {
     scroll-margin-top: 6rem;
@@ -117,17 +124,24 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  /* Phones: swipe through the cards sideways, next card peeking in. */
   @media (max-width: 640px) {
     .grid {
-      grid-template-columns: 1fr;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * var(--gutter));
+      padding-inline: var(--gutter);
+      scroll-padding-inline: var(--gutter);
     }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
+    .grid::-webkit-scrollbar {
+      display: none;
     }
-    * {
-      transition: none !important;
+    .grid > * {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
     }
   }
 </style>
