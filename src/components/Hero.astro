@@ -1,7 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Socials from './Socials.astro';
-
-const base = import.meta.env.BASE_URL;
+import profile from '../assets/profile.png';
 ---
 
 <section class="hero" id="top">
@@ -21,7 +21,9 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <aside>
-    <img src={`${base}me.png`} alt="Hand-drawn portrait of Naimi" width="112" height="112" />
+    <div class="avatar">
+      <Image src={profile} alt="Naimi Nafis" width={468} loading="eager" />
+    </div>
     <p>
       I build backend and frontend features for production SaaS at DevTech.Pro (Go, Python, React) and research
       LLM-generated code detection at Kyoto Institute of Technology. Currently specialising in AI agents with Google
@@ -76,11 +78,21 @@ const base = import.meta.env.BASE_URL;
     padding-left: clamp(2rem, 4vw, 3rem);
     border-left: 1px solid var(--line);
   }
-  img {
+  .avatar {
+    position: relative;
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
-    object-fit: cover;
+    overflow: hidden;
+  }
+  /* Crop knob: zoom to the face (about 51% across, 30% down in the photo). */
+  .avatar :global(img) {
+    position: absolute;
+    width: 187%;
+    max-width: none;
+    height: auto;
+    left: -46%;
+    top: -24%;
   }
   aside p {
     margin: 1rem 0 0;
