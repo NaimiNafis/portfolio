@@ -7,37 +7,79 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*.{png,jpg,jpeg,webp}', {
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*.{png,jpg,jpeg}', {
   eager: true,
 });
 const videos = import.meta.glob<string>('../assets/projects/*.mp4', { eager: true, query: '?url', import: 'default' });
+// Animated WebP is served as-is. Astro's image pipeline would flatten it to the first frame.
+const anims = import.meta.glob<string>('../assets/projects/*.webp', { eager: true, query: '?url', import: 'default' });
 const slugOf = (path: string) => path.split('/').pop()?.split('.')[0];
+// A project may ship several screenshots: <slug>.png, or <slug>1.png .. <slug>N.png.
+const shotRe = new RegExp(`^${project.slug}\\d*$`);
+const shots = Object.entries(images)
+  .filter(([path]) => shotRe.test(slugOf(path) ?? ''))
+  .sort(([a], [b]) => (slugOf(a) ?? '').localeCompare(slugOf(b) ?? '', undefined, { numeric: true }))
+  .map(([, mod]) => mod.default);
 const image = Object.entries(images).find(([path]) => slugOf(path) === project.slug)?.[1];
 const video = Object.entries(videos).find(([path]) => slugOf(path) === project.slug)?.[1];
+const anim = Object.entries(anims).find(([path]) => slugOf(path) === project.slug)?.[1];
+const host = project.links[0] ? new URL(project.links[0].href).hostname.replace(/^www\./, '') : '';
 ---
 
 <article style={`--color: ${project.color}`}>
-  <div class="frame">
-    {
-      video ? (
-        <video
-          src={video}
-          poster={image?.default.src}
-          aria-label={`Demo of ${project.title}`}
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        />
-      ) : image ? (
-        <Image src={image.default} alt={`Screenshot of ${project.title}`} width={880} />
+  <div class:list={['frame', project.frame]}>
+    <div class="window">
+      {
+        project.frame === 'browser' && (
+          <>
+            <div class="tabbar" aria-hidden="true">
+              <span class="dots">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span class="tab">{project.title}</span>
+            </div>
+            <div class="toolbar" aria-hidden="true">
+              <span class="nav">← → ⟳</span>
+              <span class="pill">{host}</span>
+            </div>
+          </>
+        )
+      }
+      {project.frame === 'phone' && shots.length > 0 ? (
+        shots.map((shot, i) => (
+          <div class="shot">
+            <Image src={shot} alt={`${project.title} screen ${i + 1}`} width={560} />
+          </div>
+        ))
       ) : (
-        <span class="tile" aria-hidden="true">
-          {project.title}
-        </span>
-      )
-    }
+      <div class="shot">
+        {
+          video ? (
+            <video
+              src={video}
+              poster={image?.default.src}
+              aria-label={`Demo of ${project.title}`}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            />
+          ) : anim ? (
+            <img src={anim} alt={`Demo of ${project.title}`} loading="lazy" decoding="async" />
+          ) : image ? (
+            <Image src={image.default} alt={`Screenshot of ${project.title}`} width={880} />
+          ) : (
+            <span class="tile" aria-hidden="true">
+              {project.title}
+            </span>
+          )
+        }
+      </div>
+      )}
+    </div>
   </div>
   <h3>
     {project.title}
@@ -73,14 +115,12 @@ const video = Object.entries(videos).find(([path]) => slugOf(path) === project.s
   .frame {
     position: relative;
     isolation: isolate;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    container-type: inline-size;
     aspect-ratio: 16 / 10;
-    padding: 8% 8% 0;
     border-radius: 12px;
     overflow: hidden;
     background: var(--color);
+    transition: transform 0.3s ease;
   }
   .frame::after {
     content: '';
@@ -91,32 +131,171 @@ const video = Object.entries(videos).find(([path]) => slugOf(path) === project.s
     mix-blend-mode: overlay;
     opacity: 0.4;
   }
-  .frame:has(video) {
-    padding: 0;
+
+  /* Bare media: as large as the card allows, whole and centred. */
+  .window {
+    position: absolute;
+    inset: 7%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
-  .frame video {
-    display: block;
-    width: 100%;
+  .frame:not(.browser):not(.phone) .shot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Sized to the media itself, not the box, so the radius lands on the real edges. */
+  .frame:not(.browser):not(.phone) .shot :global(img),
+  .frame:not(.browser):not(.phone) .shot video {
+    width: auto;
     height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    border-radius: 1.6cqw;
+    object-fit: contain;
   }
-  .frame :global(img) {
+  .frame:has(video) .window {
+    inset: 0;
+    border-radius: 0;
+  }
+
+  /* Desktop browser window, anchored top left, running off the right and bottom edges. */
+  .frame.browser .window {
+    inset: 12% -8% -13% 12%;
+    border-radius: 1.4cqw;
+    background: #202124;
+    box-shadow: 0 1.2cqw 2.6cqw rgb(0 0 0 / 0.3);
+  }
+  .tabbar,
+  .toolbar {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+  .tabbar {
+    height: 4.4cqw;
+    padding: 0 1.6cqw;
+    background: #2b2c2f;
+  }
+  .dots {
+    display: flex;
+    gap: 0.7cqw;
+  }
+  .dots i {
+    width: 1.1cqw;
+    height: 1.1cqw;
+    border-radius: 50%;
+    background: #ff5f57;
+  }
+  .dots i:nth-child(2) {
+    background: #febc2e;
+  }
+  .dots i:nth-child(3) {
+    background: #28c840;
+  }
+  .tab {
+    max-width: 40%;
+    margin-left: 1.6cqw;
+    padding: 0.8cqw 2.4cqw 0.8cqw 1.5cqw;
+    border-radius: 1cqw 1cqw 0 0;
+    background: #202124;
+    color: #d6d7da;
+    font-size: 1.5cqw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .toolbar {
+    gap: 1.4cqw;
+    height: 4.2cqw;
+    padding: 0 1.8cqw;
+    background: #202124;
+  }
+  .nav {
+    color: #9aa0a6;
+    font-size: 1.7cqw;
+    letter-spacing: 0.5cqw;
+    white-space: nowrap;
+  }
+  .pill {
+    flex: 1;
+    min-width: 0;
+    height: 2.7cqw;
+    display: flex;
+    align-items: center;
+    padding: 0 1.4cqw;
+    border-radius: 999px;
+    background: #35363a;
+    color: #c8c9cc;
+    font-size: 1.4cqw;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* A row of iPhones. Three phones plus two gaps come to 106.8% of the card, so the row
+     overhangs 3.4% each side and the outer phones are cut by exactly 10% of their own width. */
+  .frame.phone .window {
+    inset: 8% auto auto 50%;
+    translate: -50% 0;
+    width: max-content;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.7cqw;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .frame.phone .shot {
+    position: relative;
+    flex: none;
+    width: 33.8cqw;
+    padding: 0.85cqw;
+    border-radius: 4.4cqw;
+    background: #0d0d10;
+    box-shadow: 0 1.2cqw 2.8cqw rgb(0 0 0 / 0.35);
+  }
+  .frame.phone .shot:only-child {
+    width: 44cqw;
+  }
+  /* Dynamic Island. No screenshot carries a status bar, so nothing is doubled up. */
+  .frame.phone .shot::after {
+    content: '';
+    position: absolute;
+    top: 1.9cqw;
+    left: 50%;
+    translate: -50% 0;
+    width: 30%;
+    height: 1.7cqw;
+    border-radius: 999px;
+    background: #0d0d10;
+  }
+  .frame.phone .shot :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 3.6cqw;
+    object-fit: contain;
+  }
+
+  .shot {
+    flex: 1;
+    min-height: 0;
+  }
+  .shot video,
+  .shot :global(img) {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 8px 8px 0 0;
-    transition: transform 0.3s ease;
   }
   @media (prefers-reduced-motion: no-preference) {
-    article:hover .frame :global(img) {
-      transform: translateY(-4px);
+    article:hover .frame {
+      transform: scale(1.025);
     }
   }
   .tile {
-    align-self: center;
-    margin-bottom: 8%;
+    display: grid;
+    place-items: center;
+    height: 100%;
     text-align: center;
     color: #fff;
     font-size: clamp(1.5rem, 3vw, 2rem);

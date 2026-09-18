@@ -12,6 +12,8 @@ export interface Project {
   description: string;
   meta: string;
   color: string;
+  /** How the media is dressed: inside a desktop browser window, inside a phone body, or bare. */
+  frame?: 'browser' | 'phone';
 }
 
 export const projects: Project[] = [
@@ -30,6 +32,7 @@ export const projects: Project[] = [
       'Led an AI Chrome extension from a half-migrated backend to public launch, rebuilding the in-page panel and setting up live payments and CI. 37 installs, up to 4 people using it at once.',
     meta: 'DevTech.Pro · 2026',
     color: '#4B4FC4',
+    frame: 'browser',
   },
   {
     slug: 'cooriroo',
@@ -40,6 +43,7 @@ export const projects: Project[] = [
       'Built the trip-creation wizard, destinations heat map and live-fleet map for a fleet-management SaaS, across the Go backend and Next.js frontend. All three shipped to production in one release.',
     meta: 'DevTech.Pro · 2026',
     color: '#2F6B58',
+    frame: 'browser',
   },
   {
     slug: 'kamocomo',
@@ -57,6 +61,7 @@ export const projects: Project[] = [
       "Led engineering and design with five Japanese students on a bilingual app that teaches the unwritten etiquette of Kyoto's Kamogawa riverbank, reached through QR codes on duck figures.",
     meta: 'KIT course · 2026',
     color: '#34688C',
+    frame: 'phone',
   },
   {
     slug: 'lyrika',
@@ -77,6 +82,7 @@ export const projects: Project[] = [
       'Built a Flutter QR scanner that checks links for safety entirely on-device, so it works offline and never sends your data anywhere.',
     meta: 'KIT-ISEL · 2025',
     color: '#8C5A14',
+    frame: 'phone',
   },
   {
     slug: 'readoku',
