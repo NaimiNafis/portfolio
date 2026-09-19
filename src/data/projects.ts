@@ -40,7 +40,7 @@ export const projects: Project[] = [
     tag: 'Shipped',
     links: [{ label: 'Live', href: 'https://cooriroo.com/' }],
     description:
-      'Built the trip-creation wizard, destinations heat map and live-fleet map for a fleet-management SaaS, across the Go backend and Next.js frontend. All three shipped to production in one release.',
+      'Built the trip-creation wizard and destinations heat map for a fleet-management SaaS, and redesigned its live-fleet view. All three shipped to production in one release.',
     meta: 'DevTech.Pro · 2026',
     color: '#2F6B58',
     frame: 'browser',

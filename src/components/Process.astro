@@ -4,7 +4,6 @@ import {
   siC,
   siChromewebstore,
   siClaude,
-  siConfluence,
   siDocker,
   siFastapi,
   siFlask,
@@ -43,14 +42,15 @@ interface Step {
 const steps: Step[] = [
   {
     title: 'Understand',
-    text: 'I read before I write. I run the system locally, reproduce the problem, and trace it across backend and frontend until I can name the root cause; on MightClick I wrote up a codebase mid-migration on three axes on my first day. Then I ask the people who know: in English with my remote European team, in Japanese (JLPT N2) with my university team, and in Malay at home.',
+    text: 'I read before I write. I run the system locally, reproduce the problem, and trace it across backend and frontend until I can name the root cause. On my first day at MightClick the backend was moving to a new framework, a new payment service and a new database at once; I read all three and wrote it up that day. Then I ask the people who know: in English with my remote European team, in Japanese (JLPT N2) with my university team, and in Malay at home.',
     tools: [
       { name: 'Linux', icon: siLinux },
       { name: 'Docker', icon: siDocker },
       { name: 'Git', icon: siGit },
       { name: 'OpenAPI', icon: siOpenapiinitiative },
       { name: 'Jira', icon: siJira },
-      { name: 'Confluence', icon: siConfluence },
+      { name: 'Teams' },
+      { name: 'Slack' },
     ],
   },
   {
@@ -87,14 +87,12 @@ const steps: Step[] = [
   },
   {
     title: 'Work with AI',
-    text: "I treat AI as a teammate that needs good context. Each project I work on has a folder of markdown notes and conventions the assistant reads first, and I keep the judgement calls for myself. I also build agents as product features: I own Cooriroo's trip-creation agent on Google ADK and A2A.",
+    text: 'I treat AI as a teammate that needs good context. Each project I work on has a folder of markdown notes and conventions the assistant reads first, and I keep the judgement calls for myself. My team gave me its first AI-agent use case, a trip-creation agent, so I am learning Google ADK and the A2A protocol to build it.',
     tools: [
       { name: 'Claude Code', icon: siClaude },
-      { name: 'Google ADK' },
-      { name: 'A2A' },
-      { name: 'MCP' },
       { name: 'Gemini API', icon: siGooglegemini },
       { name: 'Azure OpenAI' },
+      { name: 'Google ADK' },
     ],
   },
 ];
@@ -206,10 +204,11 @@ const steps: Step[] = [
     font-weight: 700;
   }
   .body {
+    /* No measure cap: the column runs to the same right edge as the header pill.
+       Paragraph and tool pills both fill it, so the two stay flush. */
     padding-top: 0.6rem;
   }
   .body p {
-    max-width: 62ch;
     margin: 0;
     color: var(--ink);
   }
