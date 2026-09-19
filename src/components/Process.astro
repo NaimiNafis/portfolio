@@ -42,7 +42,7 @@ interface Step {
 const steps: Step[] = [
   {
     title: 'Understand',
-    text: 'I read before I write. I run the system locally, reproduce the problem, and trace it across backend and frontend until I can name the root cause. On my first day at MightClick the backend was moving to a new framework, a new payment service and a new database at once; I read all three and wrote it up that day. Then I ask the people who know: in English with my remote European team, in Japanese (JLPT N2) with my university team, and in Malay at home.',
+    text: 'I read the code before I change it. I run the system myself, make the bug happen again, and follow it until I find the real cause. On my first day at MightClick, the backend was moving to a new framework, a new payment service and a new database at once. I read it all and wrote it up that day. Then I ask the people who know, in English, Japanese (JLPT N2) or Malay.',
     tools: [
       { name: 'Linux', icon: siLinux },
       { name: 'Docker', icon: siDocker },
@@ -55,7 +55,7 @@ const steps: Step[] = [
   },
   {
     title: 'Build',
-    text: 'I build the feature end to end, and I put rules where the client cannot skip them. On Cooriroo, per-row count fetches became a single Go endpoint with its contract pinned by tests. On KamoComo, vote limits and geofences live in Postgres behind row-level security, not in React. Go and Python are my daily languages; Java and C are the foundations from university, and Flask is where my first backends started.',
+    text: 'I build a feature from the database to the screen. I keep the important rules in the database, so no part of the app can skip them. On Cooriroo, one page asked the server for a number once per row, and I made it one request for all rows.',
     tools: [
       { name: 'Go', icon: siGo },
       { name: 'Python', icon: siPython },
@@ -73,7 +73,7 @@ const steps: Step[] = [
   },
   {
     title: 'Ship',
-    text: "Nothing counts until real users have it. I set up the checks that make shipping boring: MightClick's backend went from no automation to linting, tests and strict typing blocking every pull request, with production behind a manual deploy. Three of my Cooriroo features reached production in a single release.",
+    text: 'A feature only counts when real people use it. MightClick had no automatic checks, so I added them, and now every change is tested before anyone can merge it. On Cooriroo, three of my features reached users in one release.',
     tools: [
       { name: 'GitHub Actions', icon: siGithubactions },
       { name: 'pytest', icon: siPytest },
@@ -87,7 +87,7 @@ const steps: Step[] = [
   },
   {
     title: 'Work with AI',
-    text: 'I treat AI as a teammate that needs good context. Each project I work on has a folder of markdown notes and conventions the assistant reads first, and I keep the judgement calls for myself. My team gave me its first AI-agent use case, a trip-creation agent, so I am learning Google ADK and the A2A protocol to build it.',
+    text: 'I treat AI as a teammate that needs good notes. Every project I work on has a folder of plain notes the assistant reads first, and the decisions stay mine. My team gave me its first AI agent job, a trip planner, so I am learning the tools for it.',
     tools: [
       { name: 'Claude Code', icon: siClaude },
       { name: 'Gemini API', icon: siGooglegemini },
