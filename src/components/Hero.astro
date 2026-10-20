@@ -9,20 +9,7 @@ const base = import.meta.env.BASE_URL;
 <section class="hero" id="top">
   <div class="intro">
     <h1>Hi, I'm Naimi</h1>
-    <p class="lede">Full-stack software engineer and researcher in Kyoto, Japan.</p>
-    <dl>
-      <div>
-        <dt>Currently</dt>
-        <dd>
-          <a href="https://devtech.pro/en" target="_blank" rel="noopener">DevTech.Pro</a>{' · '}
-          <a href="https://kit-isel.github.io/member/" target="_blank" rel="noopener">KIT-ISEL</a>
-        </dd>
-      </div>
-      <div>
-        <dt>Education</dt>
-        <dd>M.S. <a href="https://www.kit.ac.jp/" target="_blank" rel="noopener">KIT</a>, 2028</dd>
-      </div>
-    </dl>
+    <p class="lede">Software engineer and researcher in Kyoto, Japan.</p>
   </div>
 
   <aside>
@@ -30,16 +17,6 @@ const base = import.meta.env.BASE_URL;
       <Image class="photo" src={profile} alt="" width={800} loading="eager" />
       <img class="drawing" src={`${base}me.png`} alt="" width="256" height="256" />
     </button>
-    <p>
-      I build backend and frontend features for production SaaS at{' '}
-      <a href="https://devtech.pro/en" target="_blank" rel="noopener">DevTech.Pro</a> (Go, Python, React) and research
-      LLM-generated code detection at{' '}
-      <a href="https://www.kit.ac.jp/" target="_blank" rel="noopener">Kyoto Institute of Technology</a>. I am learning to build AI agents, starting with the first agent use
-      case on my team.
-    </p>
-    <p lang="ja">
-      京都を拠点とするフルスタックエンジニアです。京都工芸繊維大学大学院でLLMが生成したコードの検出を研究しながら、DevTech.ProではGo・Python・Reactを用いたSaaS開発を担当しています。現在はチームで初めてのAIエージェント開発を任され、必要な技術を学んでいるところです。
-    </p>
     <Socials />
   </aside>
 </section>
@@ -71,21 +48,6 @@ const base = import.meta.env.BASE_URL;
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--muted);
-  }
-  dl {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    gap: 1.5rem;
-    margin: clamp(2rem, 5vw, 3.5rem) 0 0;
-  }
-  dt {
-    font-weight: 700;
-    font-size: 1.25rem;
-  }
-  dd {
-    margin: 0.25rem 0 0;
-    font-size: 1.25rem;
     color: var(--muted);
   }
   aside {
@@ -142,11 +104,6 @@ const base = import.meta.env.BASE_URL;
     .avatar:hover .drawing {
       opacity: 1;
     }
-  }
-  aside p {
-    margin: 1rem 0 0;
-    font-size: 1.15rem;
-    color: var(--muted);
   }
   aside :global(.socials) {
     margin-top: 1.5rem;

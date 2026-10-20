@@ -12,6 +12,8 @@ export interface Project {
   description: string;
   meta: string;
   color: string;
+  /** Names must match a key in the icon map in ProjectCard.astro. */
+  tools: string[];
   /** How the media is dressed: inside a desktop browser window, inside a phone body, or bare. */
   frame?: 'browser' | 'phone';
 }
@@ -32,6 +34,7 @@ export const projects: Project[] = [
       'Led an AI Chrome extension from a half-migrated backend to public launch, rebuilding the in-page panel and setting up live payments and CI. 37 installs, up to 4 people using it at once.',
     meta: 'DevTech.Pro · 2026',
     color: '#4B4FC4',
+    tools: ['Python', 'TypeScript', 'FastAPI', 'Flask', 'pytest', 'GitHub Actions', 'Stripe', 'Chrome Web Store'],
     frame: 'browser',
   },
   {
@@ -43,6 +46,7 @@ export const projects: Project[] = [
       'Built the trip-creation wizard and destinations heat map for a fleet-management SaaS, and redesigned its live-fleet view. All three shipped to production in one release.',
     meta: 'DevTech.Pro · 2026',
     color: '#2F6B58',
+    tools: ['Go', 'TypeScript', 'React', 'Next.js', 'PostgreSQL', 'Docker', 'Git'],
     frame: 'browser',
   },
   {
@@ -61,6 +65,7 @@ export const projects: Project[] = [
       "Led engineering and design with five Japanese students on a bilingual app that teaches the unwritten etiquette of Kyoto's Kamogawa riverbank, reached through QR codes on duck figures.",
     meta: 'KIT course · 2026',
     color: '#34688C',
+    tools: ['TypeScript', 'JavaScript', 'Supabase', 'Google Maps'],
     frame: 'phone',
   },
   {
@@ -72,6 +77,7 @@ export const projects: Project[] = [
       'Built a browser extension that names the song playing in any tab and shows its lyrics, translations and similar songs. Placed 3rd of 24 teams at Giiku CAMP Vol. 6.',
     meta: 'Giiku CAMP Vol. 6 · 2025',
     color: '#A8416A',
+    tools: ['Python', 'Flask', 'FastAPI', 'JavaScript'],
   },
   {
     slug: 'qrious',
@@ -82,6 +88,7 @@ export const projects: Project[] = [
       'Built a Flutter QR scanner that checks links for safety entirely on-device, so it works offline and never sends your data anywhere.',
     meta: 'KIT-ISEL · 2025',
     color: '#8C5A14',
+    tools: ['Flutter', 'Dart'],
     frame: 'phone',
   },
   {
@@ -93,5 +100,6 @@ export const projects: Project[] = [
       'Built a browser extension that translates selected Japanese in place, so learners never switch tabs. Caching and batching made it 30% faster than the first prototype.',
     meta: 'TrackJob · 2025',
     color: '#6E54A8',
+    tools: ['Python', 'Flask', 'FastAPI', 'JavaScript'],
   },
 ];

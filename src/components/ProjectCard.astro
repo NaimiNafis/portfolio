@@ -1,6 +1,49 @@
 ---
 import { Image } from 'astro:assets';
+import {
+  siChromewebstore,
+  siDart,
+  siDocker,
+  siFastapi,
+  siFlask,
+  siFlutter,
+  siGit,
+  siGithubactions,
+  siGo,
+  siGooglemaps,
+  siJavascript,
+  siNextdotjs,
+  siPostgresql,
+  siPytest,
+  siPython,
+  siReact,
+  siStripe,
+  siSupabase,
+  siTypescript,
+} from 'simple-icons';
 import type { Project } from '../data/projects';
+
+const icons: Record<string, { path: string }> = {
+  'Chrome Web Store': siChromewebstore,
+  Dart: siDart,
+  Docker: siDocker,
+  FastAPI: siFastapi,
+  Flask: siFlask,
+  Flutter: siFlutter,
+  Git: siGit,
+  'GitHub Actions': siGithubactions,
+  Go: siGo,
+  'Google Maps': siGooglemaps,
+  JavaScript: siJavascript,
+  'Next.js': siNextdotjs,
+  PostgreSQL: siPostgresql,
+  pytest: siPytest,
+  Python: siPython,
+  React: siReact,
+  Stripe: siStripe,
+  Supabase: siSupabase,
+  TypeScript: siTypescript,
+};
 
 interface Props {
   project: Project;
@@ -82,26 +125,56 @@ const host = project.links[0] ? new URL(project.links[0].href).hostname.replace(
     </div>
   </div>
   <h3>
-    {project.title}
-    <span class="tag">{project.tag}</span>
+    <button type="button" class="open" aria-haspopup="dialog">{project.title}</button>
   </h3>
-  <p>{project.description}</p>
-  <p class="meta">{project.meta}</p>
-  <ul class="links">
-    {
-      project.links.map((link) => (
-        <li>
-          <a href={link.href} target="_blank" rel="noopener">
-            {link.label}
-            <span aria-hidden="true"> ↗</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <p class="year">{project.meta.slice(-4)}</p>
+  <dialog aria-label={project.title}>
+    <form method="dialog">
+      <button class="close" aria-label="Close">✕</button>
+    </form>
+    <h3>
+      {project.title}
+      <span class="tag">{project.tag}</span>
+    </h3>
+    <p>{project.description}</p>
+    <p class="meta">{project.meta}</p>
+    <ul class="tools" aria-label="Tools">
+      {
+        project.tools.map((tool) => (
+          <li>
+            {icons[tool] && (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d={icons[tool].path} />
+              </svg>
+            )}
+            {tool}
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="links">
+      {
+        project.links.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener">
+              {link.label}
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </dialog>
 </article>
 
 <script>
+  // The whole card opens its dialog; a click on the backdrop (the dialog element itself) closes it.
+  document.querySelectorAll<HTMLElement>('article').forEach((card) => {
+    const dialog = card.querySelector('dialog')!;
+    card.querySelector('.open')?.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', (event) => event.target === dialog && dialog.close());
+  });
+
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll<HTMLVideoElement>('.frame video').forEach((video) => video.pause());
   }
@@ -109,8 +182,81 @@ const host = project.links[0] ? new URL(project.links[0].href).hostname.replace(
 
 <style>
   article {
+    position: relative;
     display: flex;
     flex-direction: column;
+  }
+  /* The title button stretches over the whole card, so the card is one click target. */
+  .open {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .open::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+  }
+  .open:focus-visible {
+    outline: none;
+  }
+  .open:focus-visible::after {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+  .year {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+  }
+  dialog {
+    width: min(36rem, calc(100% - 2 * var(--gutter)));
+    padding: 2rem;
+    border: 0;
+    border-radius: 16px;
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: 0 24px 64px rgb(20 20 20 / 0.25);
+    opacity: 0;
+    transition:
+      opacity 0.25s ease,
+      display 0.25s allow-discrete,
+      overlay 0.25s allow-discrete;
+  }
+  dialog[open] {
+    opacity: 1;
+  }
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+    }
+  }
+  dialog::backdrop {
+    background: rgb(20 20 20 / 0.4);
+  }
+  dialog h3 {
+    margin-top: 0;
+    padding-right: 2.5rem;
+  }
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--ink);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .close:hover {
+    background: var(--hover);
   }
   .frame {
     position: relative;
@@ -326,10 +472,32 @@ const host = project.links[0] ? new URL(project.links[0].href).hostname.replace(
     color: var(--muted);
   }
   .meta {
-    margin-top: auto;
     padding-top: 0.75rem;
     font-weight: 600;
     color: var(--ink);
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+  .tools li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .tools svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    fill: currentColor;
   }
   .links {
     display: flex;

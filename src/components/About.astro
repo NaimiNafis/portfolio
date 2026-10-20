@@ -10,7 +10,6 @@ interface Row {
   orgs: Link[];
   note?: string;
   dates: string;
-  line?: string;
 }
 
 const experience: Row[] = [
@@ -19,13 +18,11 @@ const experience: Row[] = [
     orgs: [devtech],
     note: 'student employee, remote',
     dates: 'Jun 2026 – Present',
-    line: 'Public Chrome Web Store launch and CI/CD for MightClick. Trip wizard, heat map, live-fleet redesign and one aggregation endpoint for Cooriroo.',
   },
   {
     role: 'Graduate Researcher',
     orgs: [isel, kit],
     dates: 'Apr 2025 – Present',
-    line: 'Detecting LLM-generated code. Built the lab attendance system and a Dockerised benchmark for three detectors.',
   },
   { role: 'M.S. Computer Science & Engineering', orgs: [kit], dates: 'Apr 2026 – Mar 2028' },
   { role: 'B.Eng. Information Science', orgs: [kit], dates: 'Apr 2022 – Mar 2026' },
@@ -35,7 +32,7 @@ const experience: Row[] = [
 
 <section id="about">
   <h2>About</h2>
-  <ul>
+  <ul class="rows">
     {
       experience.map((item) => (
         <li>
@@ -53,12 +50,24 @@ const experience: Row[] = [
               ))}
               {item.note && ` · ${item.note}`}
             </p>
-            {item.line && <p>{item.line}</p>}
           </div>
         </li>
       ))
     }
   </ul>
+  <details>
+    <summary>More about me</summary>
+    <p>
+      I build backend and frontend features for production SaaS at{' '}
+      <a href="https://devtech.pro/en" target="_blank" rel="noopener">DevTech.Pro</a> (Go, Python, React) and research
+      LLM-generated code detection at{' '}
+      <a href="https://www.kit.ac.jp/" target="_blank" rel="noopener">Kyoto Institute of Technology</a>. I am learning to build AI agents, starting with the first agent use
+      case on my team.
+    </p>
+    <p lang="ja">
+      京都を拠点とするフルスタックエンジニアです。京都工芸繊維大学大学院でLLMが生成したコードの検出を研究しながら、DevTech.ProではGo・Python・Reactを用いたSaaS開発を担当しています。現在はチームで初めてのAIエージェント開発を任され、必要な技術を学んでいるところです。
+    </p>
+  </details>
 </section>
 
 
@@ -68,7 +77,7 @@ const experience: Row[] = [
     padding: 0;
     margin: 0;
   }
-  li {
+  .rows > li {
     display: grid;
     grid-template-columns: 14rem 1fr;
     gap: 0.25rem 2rem;
@@ -92,8 +101,21 @@ const experience: Row[] = [
     color: var(--ink);
   }
 
+  details {
+    margin-top: 1.5rem;
+    max-width: 48rem;
+  }
+  summary {
+    width: fit-content;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  details > p {
+    margin-top: 1rem;
+  }
+
   @media (max-width: 640px) {
-    li {
+    .rows > li {
       grid-template-columns: 1fr;
     }
   }
